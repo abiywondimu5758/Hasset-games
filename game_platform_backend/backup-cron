@@ -1,0 +1,2 @@
+# Backup PostgreSQL database at 9 PM, midnight, and 7 AM daily
+0 0,7,21 * * * pg_dump -h db -U postgres game_platform > /backup/db_backup_$(date +\%Y\%m\%d).sql

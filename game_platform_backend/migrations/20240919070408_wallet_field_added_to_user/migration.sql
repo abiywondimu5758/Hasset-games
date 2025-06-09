@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "wallet" DECIMAL(65,30) NOT NULL DEFAULT 10.00;

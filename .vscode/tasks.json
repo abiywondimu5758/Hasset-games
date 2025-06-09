@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "npm uninstall crypto@1.0.1",
+			"command": "npm",
+			"args": [
+				"uninstall",
+				"crypto@1.0.1"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/game_platform_backend"
+			},
+			"presentation": {
+				"reveal": "silent"
+			}
+		}
+	]
+}

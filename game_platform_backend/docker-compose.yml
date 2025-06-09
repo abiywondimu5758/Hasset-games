@@ -1,0 +1,94 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy  # Ensure the app waits for the db to be healthy
+    volumes:
+      - .:/src
+    networks:
+      - backend-network
+    restart: always  # Ensures the app restarts if it fails
+    command: npx pm2-runtime start src/server.js --name game_platform_backend  # Use PM2
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:5000/health"]  # Adjust this endpoint as needed
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: game_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf  # Mount the custom config
+    networks:
+      - backend-network
+    restart: always  # Restart policy for DB
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgbouncer:
+    image: edoburu/pgbouncer
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: root
+      POOL_MODE: transaction  # Adjust pool mode as needed (session/transaction)
+      MAX_CLIENT_CONN: 500
+      DEFAULT_POOL_SIZE: 200
+      LISTEN_ADDR: 0.0.0.0
+      LISTEN_PORT: 6432
+    ports:
+      - "6432:6432"  # Expose PgBouncer on port 6432
+    volumes:
+      - ./pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini  # Optional: Custom PgBouncer config
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-p", "6432", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  db-backup:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    depends_on:
+      - db
+    volumes:
+      - ./backups:/backups  # Mount local backups directory to container
+      - ./backup.sh:/usr/local/bin/backup.sh  # Mount the backup script
+    networks:
+      - backend-network
+    entrypoint: ["/bin/sh", "-c", "/usr/local/bin/backup.sh"]  # Run the backup script
+    restart: always  # Ensure backup container restarts if it fails
+
+volumes:
+  pgdata:
+
+networks:
+  backend-network:
+    driver: bridge
+
+

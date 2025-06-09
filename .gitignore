@@ -1,0 +1,24 @@
+# Ignore node_modules in backend and frontend
+game_platform_backend/node_modules/
+game_platform_frontend/node_modules/
+admin-dashboard/node_modules
+
+# Ignore .env file in backend
+game_platform_backend/.env
+game_platform_backend/pgbouncer.ini
+# Other typical ignores
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Ignore log files
+game_platform_backend/*.log
+game_platform_frontend/*.log
+
+
+# Ignore venv and .env files in bots
+bots/venv/
+bots/.env
+bots/telebot.logs

@@ -1,0 +1,347 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+  engineType    = "binary"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int                 @id @default(autoincrement())
+  phoneNumber        String?             @unique
+  username           String?             @unique
+  password           String
+  wallet             Decimal             @default(10.00)
+  totalDeposit       Decimal             @default(0.00)   // <-- New field to track total deposits
+  referredBy         String?
+  referredCount      Int                 @default(0)
+  referralBonus      Decimal             @default(0.00)
+  registrationDate   DateTime            @default(now())
+  referralCode       String              @unique
+  verified           Boolean             @default(false)
+  otp                Int                 @default(1234)
+  email              String?             @unique
+  role               Role                @default(USER)
+  bonusPoints        BonusPoint[]        @relation("UserBonusPoints")
+  referredUsers      ReferredUser[]
+  transactions       Transaction[]       @relation("UserTransaction")
+  withdrawalRequests WithdrawalRequest[] @relation("UserWithdrawalRequest")
+  userBingoCards     UserBingoCard[]     @relation("UserBingoCards")
+  statistics         UserStatistics?
+  winner             Winner[]            @relation("JackpotWinners")
+  gamesLost          Game[]              @relation("UserGamesLost")
+  gamesPlayed        Game[]              @relation("UserGamesPlayed")
+  gamesWon           Game[]              @relation("UserGamesWon")
+  BingoFee           BingoFee[]          @relation("UserBingoFees")
+  bonusParticipations BonusPeriodParticipation[] // <-- added relation field for BonusPeriod participations
+
+  @@index([phoneNumber])
+  @@index([username])
+  @@index([email])
+  @@index([role])
+}
+
+model ReferredUser {
+  id               Int      @id @default(autoincrement())
+  referrerId       Int
+  referredUsername String
+  referredPhone    String
+  registrationDate DateTime @default(now())
+  bonusAwarded     Boolean  @default(false)  // <-- New field added
+  referrer         User     @relation(fields: [referrerId], references: [id])
+}
+
+model Game {
+  id          Int     @id @default(autoincrement())
+  title       String  @unique
+  description String
+  picture     String  @default("")
+  stakes      Stake[] @relation("GameStakes")
+  usersLost   User[]  @relation("UserGamesLost")
+  usersPlayed User[]  @relation("UserGamesPlayed")
+  usersWon    User[]  @relation("UserGamesWon")
+
+  @@index([title])
+}
+
+model Stake {
+  id         Int         @id @default(autoincrement())
+  amount     Decimal
+  bingoGames BingoGame[] @relation("StakeBingoGames")
+  games      Game[]      @relation("GameStakes")
+
+  @@index([amount])
+}
+
+model BingoGame {
+  id              Int             @id @default(autoincrement())
+  stakeId         Int
+  createdAt       DateTime        @default(now())
+  active          Boolean         @default(false)
+  countdownStart  DateTime?
+  countdownEnd    DateTime?
+  possibleWin     Decimal         @default(0)
+  assignedCardIds Int[]
+  hasEnded        Boolean         @default(false)
+  drawnNumbers    Int[]           @default([])
+  declaredWinners Int[]           @default([])
+  stake           Stake           @relation("StakeBingoGames", fields: [stakeId], references: [id])
+  players         UserBingoCard[]
+  fees            BingoFee[]      @relation("BingoGameFees")
+
+  @@index([stakeId])
+  @@index([hasEnded])
+  @@index([active])
+}
+
+model UserBingoCard {
+  userId        Int
+  gameId        Int
+  createdAt     DateTime  @default(now())
+  cardId        Int
+  markedNumbers String
+  autoPlay      Boolean   @default(true)
+  bingoCard     BingoCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  game          BingoGame @relation(fields: [gameId], references: [id])
+  user          User      @relation("UserBingoCards", fields: [userId], references: [id])
+
+  @@id([userId, gameId, cardId])
+  @@unique([userId, gameId])
+  @@index([userId])
+}
+
+model BingoCard {
+  id            Int             @id @default(autoincrement())
+  numbers       String
+  userBingoCard UserBingoCard[]
+}
+
+model UserStatistics {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @unique
+  gamesPlayed  Int      @default(0)
+  gamesWon     Int      @default(0)
+  gamesLost    Int      @default(0)
+  amountWon    Float    @default(0)
+  dailyStats   Json     @default("{}")
+  weeklyStats  Json     @default("{}")
+  monthlyStats Json     @default("{}")
+  yearlyStats  Json     @default("{}")
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model BonusPeriod {
+  id                Int               @id @default(autoincrement())
+  startDate         DateTime
+  endDate           DateTime
+  type              String
+  status            String
+  createdAt         DateTime          @default(now())
+  dateTimeInAMH     String
+  predefinedWinners Int?
+  prizeDistribution PrizeDistribution @default(PREDEFINED)
+  points            BonusPoint[]
+  prizes            Prize[]
+  winners           Winner[]
+  participations    BonusPeriodParticipation[] // <-- added relation field for BonusPeriod participations
+  // New eligibility criteria fields:
+  minGames          Int?              // Minimum games a user must play
+  minDeposit        Decimal?          // Minimum deposit amount required
+  allowedStakes     Int[]             @default([])
+
+  @@unique([startDate, endDate, type])
+  @@index([startDate])
+  @@index([endDate])
+  @@index([type])
+}
+
+model BonusPoint {
+  id            Int         @id @default(autoincrement())
+  userId        Int
+  bonusPeriodId Int
+  points        Int
+  createdAt     DateTime    @default(now())
+  bonusPeriod   BonusPeriod @relation(fields: [bonusPeriodId], references: [id])
+  user          User        @relation("UserBonusPoints", fields: [userId], references: [id])
+
+  @@unique([userId, bonusPeriodId])
+  @@index([userId, bonusPeriodId])
+}
+
+model Prize {
+  id            Int         @id @default(autoincrement())
+  bonusPeriodId Int
+  rank          Int
+  amount        Decimal
+  createdAt     DateTime    @default(now())
+  bonusPeriod   BonusPeriod @relation(fields: [bonusPeriodId], references: [id])
+
+  @@unique([bonusPeriodId, rank])
+  @@index([bonusPeriodId, rank])
+}
+
+model Winner {
+  id             Int         @id @default(autoincrement())
+  userId         Int
+  bonusPeriodId  Int
+  amountWon      Decimal     @default(0)
+  rank           Int
+  prizeGiven     Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+  prizeGivenDate DateTime?
+  bonusPeriod    BonusPeriod @relation(fields: [bonusPeriodId], references: [id])
+  user           User        @relation("JackpotWinners", fields: [userId], references: [id])
+
+  @@unique([userId, bonusPeriodId, rank])
+  @@index([userId, bonusPeriodId, rank])
+}
+
+model Transaction {
+  id                Int      @id @default(autoincrement())
+  event             String
+  first_name        String?
+  last_name         String?
+  email             String?
+  username          String
+  mobile            String
+  currency          String
+  amount            Decimal
+  charge            Decimal
+  status            String
+  failure_reason    String?
+  mode              String
+  reference         String   @unique
+  created_at        DateTime
+  updated_at        DateTime
+  type              String
+  tx_ref            String   @unique
+  payment_method    String
+  customization     Json
+  meta              Json
+  userWalletUpdated Boolean  @default(false)
+  userId            Int      @default(1)
+  user              User     @relation("UserTransaction", fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@index([tx_ref])
+}
+
+model WalletTransaction {
+  id        Int      @id @default(autoincrement())
+  type      String // "DEPOSIT" or "WITHDRAWAL"
+  amount    Decimal
+  createdAt DateTime @default(now())
+}
+
+// Global aggregate to track running wallet balance
+model WalletAggregate {
+  id             Int      @id @default(1)
+  currentBalance Decimal  @default(0)
+  updatedAt      DateTime @updatedAt
+}
+
+// Model to store pre-aggregated wallet transaction data
+model WalletTransactionAggregate {
+  id         Int      @id @default(autoincrement())
+  date       DateTime @unique
+  deposit    Decimal  @default(0)
+  withdrawal Decimal  @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Trial {
+  id       Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+// =====> NEW: Model to store daily aggregated Bingo fees
+model DailyBingoFeeAggregate {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @unique
+  amount    Decimal  @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+// Model to track platform fees from Bingo games
+model BingoFee {
+  id        Int      @id @default(autoincrement())
+  gameId    Int      // Reference to the BingoGame
+  userId    Int      // Reference to the User
+  amount    Decimal // The fee amount
+  createdAt DateTime @default(now())
+  game      BingoGame @relation("BingoGameFees", fields: [gameId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user      User      @relation("UserBingoFees", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([gameId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model WithdrawalRequest {
+  id            Int              @id @default(autoincrement())
+  userId        Int
+  user          User             @relation("UserWithdrawalRequest", fields: [userId], references: [id])
+  amount        Float
+  accountNumber String
+  bankCode      String
+  status        WithdrawalStatus @default(PENDING)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model BonusPeriodParticipation {
+  id             Int      @id @default(autoincrement())
+  bonusPeriodId  Int
+  userId         Int
+  gamesPlayed    Int      @default(0)
+  depositAmount  Decimal  @default(0.00)
+  stakeIds       Int[]    // All stakes the user played during the bonus period
+  
+  bonusPeriod    BonusPeriod @relation(fields: [bonusPeriodId], references: [id])
+  user           User        @relation(fields: [userId], references: [id])
+  
+  @@unique([bonusPeriodId, userId])
+  @@index([userId])
+}
+
+enum WithdrawalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum Role {
+  USER
+  ADMIN
+  STAFF
+}
+
+enum PrizeDistribution {
+  PREDEFINED
+  RANDOM
+  BOTH
+}
