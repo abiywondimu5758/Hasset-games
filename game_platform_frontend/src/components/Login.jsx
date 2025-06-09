@@ -121,7 +121,7 @@ const LoginForm = () => {
         <div className="flex flex-col space-y-2">
         <button
         type="submit"
-        className="w-full px-2 py-1 text-white rounded text-base bg-primary hover:bg-opacity-75 transition duration-300"
+        className="w-full px-2 py-1 text-semibold text-white rounded text-base bg-primary hover:bg-opacity-75 transition duration-300"
         disabled={loginMutation.isPending}
         aria-busy={loginMutation.isPending}
         >

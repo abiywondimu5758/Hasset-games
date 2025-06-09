@@ -606,11 +606,12 @@ const RegisterForm = () => {
               </div>
             </form>
             <div className="mt-4 text-center text-xs sm:text-sm text-text">
+              <span>Already have an account?</span>
               <a
                 href="/login"
                 className="font-bold hover:text-opacity-90 transition"
               >
-                Already have an account? Login
+                Login
               </a>
             </div>
           </div>
