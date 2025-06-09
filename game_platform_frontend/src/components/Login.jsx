@@ -52,28 +52,28 @@ const LoginForm = () => {
 
 
   return (
-    <div className="flex justify-center items-center p-6 bg-[#20446f]/75 w-full h-screen">
+    <div className="flex justify-center items-center p-6 bg-bg/75 w-full h-screen text-text">
 
-      <div className="w-full max-w-sm mx-auto h-fit  bg-white rounded-3xl shadow-lg">
+      <div className="w-full max-w-sm mx-auto h-fit  bg-bg rounded shadow-xl backdrop-blur-xl">
       <div className="px-6 pt-6">
         {/* <img src='/assets/Asset1.svg' alt="Logo"/> */}
       </div>
-      <hr className="border-t-1 border-[#186ccc] opacity-20 w-full mt-4 mb-2" />
-      <div className="px-6 pb-6">
-      <h2 className="text-xl md:text-2xl text-[#20446f] font-semibold mb-4 text-center">
+      <hr className="border-t-1 border-primary opacity-20 w-full mt-4 mb-2" />
+      <div className="px-6 pb-4">
+      <h2 className="text-xl md:text-2xl text-primary font-semibold mb-4 text-center">
         Login
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-6 mb-2">
+      <form onSubmit={handleSubmit} className="space-y-4 mb-2 w-full">
         <div className="space-y-3">
         <div className="flex flex-col items-start justify-start space-y-1 w-full">
-          <label htmlFor="username" className="text-xs md:text-sm font-semibold text-[#1a1a1a]">
+          <label htmlFor="username" className="text-xs md:text-sm font-semibold text-text">
           Username
           </label>
           <Tooltip
           title="Fill in your username"
           open={showUsernameToolTip}
           placement="top"
-          overlayInnerStyle={{ backgroundColor: '#20446f', color: '#fff' }}
+          overlayInnerStyle={{ backgroundColor: '#e67300', color: '#fff' }}
           >
           <div className="w-full">
             <input
@@ -81,21 +81,21 @@ const LoginForm = () => {
             type="text"
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-            className="w-full p-2 border border-[#186ccc] rounded focus:outline-none focus:ring-1 focus:ring-[#20446f] text-xs font-semibold text-[#1a1a1a] focus:scale-100 bg-[#20446f]/10"
+            className="w-full p-2 border border-text/40 rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-text focus:scale-100 bg-transparent"
             aria-required="true"
             />
           </div>
           </Tooltip>
         </div>
         <div className="flex flex-col items-start justify-start space-y-1 w-full">
-          <label htmlFor="password" className="text-xs md:text-sm font-semibold text-[#1a1a1a]">
+          <label htmlFor="password" className="text-xs md:text-sm font-semibold text-text">
           Password
           </label>
           <Tooltip
           title="Fill in your password"
           open={showPasswordToolTip}
           placement="top"
-          overlayInnerStyle={{ backgroundColor: '#20446f', color: '#fff' }}
+          overlayInnerStyle={{ backgroundColor: '#e67300', color: '#fff' }}
           >
           <div className="relative w-full">
             <input
@@ -103,13 +103,13 @@ const LoginForm = () => {
             type={showPassword ? "text" : "password"}
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full p-2 border border-[#186ccc] rounded focus:outline-none focus:ring-1 focus:ring-[#20446f] text-xs font-semibold text-[#1a1a1a] bg-[#20446f]/10"
+            className="w-full p-2 border border-text/40 rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-text focus:scale-100 bg-transparent"
             aria-required="true"
             />
             <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#20446f]"
+            className="absolute inset-y-0 right-0 flex items-center pr-3 text-primary"
             aria-label={showPassword ? "Hide password" : "Show password"}
             >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -121,7 +121,7 @@ const LoginForm = () => {
         <div className="flex flex-col space-y-2">
         <button
         type="submit"
-        className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-[#20446f] hover:bg-opacity-75 transition duration-300"
+        className="w-full px-2 py-1 text-white rounded text-base bg-primary hover:bg-opacity-75 transition duration-300"
         disabled={loginMutation.isPending}
         aria-busy={loginMutation.isPending}
         >
@@ -135,21 +135,21 @@ const LoginForm = () => {
         </div>
       </form>
     
-      <a
-        href="/forgot-password"
-        className="text-xs sm:text-sm font-bold pt-8 text-[#20446f] hover:text-opacity-90 transition duration-300"
-      >
-        Forgot password?
-      </a>
-      <div className="flex space-x-1 pt-2">
-        <p className="text-xs sm:text-sm text-black">
-        Don&apos;t have an account?
-        </p>
+      <div className="mt-4 text-center text-xs sm:text-sm text-text">
         <a
-        href="/register"
-        className="text-xs sm:text-sm font-bold text-[#20446f] hover:text-opacity-90 transition duration-300"
+          href="/forgot-password"
+          className="font-bold hover:text-opacity-90 transition"
         >
-        Register
+          Forgot password?
+        </a>
+      </div>
+      <div className="mt-2 flex justify-center space-x-1 text-xs sm:text-sm text-text">
+        <span>Don’t have an account?</span>
+        <a
+          href="/register"
+          className="font-bold hover:text-opacity-90 transition"
+        >
+          Register
         </a>
       </div>
       </div>

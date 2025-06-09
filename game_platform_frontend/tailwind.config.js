@@ -6,6 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        text:      '#20436F',
+        bg:        '#DDEAF8',
+        primary:   '#E67300',
+        secondary: '#186DCD',
+        accent:    '#FBEE00',
+      },
       screens: {
         sm:'500px',
         sss:'470px',
@@ -29,4 +36,8 @@ module.exports = {
       },
     },
   },
+    corePlugins: {
+    backdropBlur: true,   // turn on the built-in backdrop‐blur utilities
+  },
+  plugins: [],
 };
