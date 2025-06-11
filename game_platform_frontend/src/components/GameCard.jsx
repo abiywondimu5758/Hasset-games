@@ -16,7 +16,7 @@ const GameCard = ({ game }) => {
   
   return (
     <div
-      className="bg-gray-900/85  border-[#43a046] rounded-xl  overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
+      className="bg-primary/65  border-[#43a046] rounded-xl  overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
       onClick={handleClick}
     >
       <img

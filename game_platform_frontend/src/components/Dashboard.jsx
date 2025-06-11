@@ -42,7 +42,7 @@ const Dashboard = observer(() => {
       {contextHolder}
 
       {/* className="bg-[#20446f] h-screen" */}
-      <div className="bg-[#20446f]/75 h-screen">
+      <div className="bg-text/75 h-screen">
         <Nav />
         <GameList />
       </div>

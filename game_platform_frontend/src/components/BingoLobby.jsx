@@ -130,17 +130,17 @@ const BingoLobby = observer(() => {
   }
 
   return (
-    <div className="bingo-lobby-container bg-[#1c6758]/55">
+    <div className="bingo-lobby-container bg-text/55">
       {contextHolder}
       <Nav />
 <div className="w-full h-fit mb-20">
-      <div className="content text-center  text-[#263238] rounded-lg px-5 md:px-64 h-fit">
+      <div className="content text-center  text-primary rounded-lg px-5 md:px-64 h-fit">
         <div className=" sm:p-5 rounded-lg bg-gray-800/85 h-fit">
           <h1 className="sm:text-lg text-base font-semibold py-5 text-white">
             Choose Your Stake
           </h1>
 <div className="">
-            <div className="flex justify-between items-center bg-[#1c6758] p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div className="flex justify-between items-center bg-primary p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
             <div className="w-16">
               <div className="font-semibold text-sm sm:text-lg text-white">Stake</div>
             </div>

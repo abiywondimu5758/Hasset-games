@@ -28,10 +28,10 @@ import Logo from "../../public/assets/logo.svg";
 // Reusable Wallet component
 const WalletButton = ({ onClick, userProfile }) => (
   <button
-    className="flex items-center text-[#20446f] font-semibold text-xs ees:text-base"
+    className="flex items-center text-white font-semibold text-xs ees:text-base"
     onClick={onClick}
   >
-    <div className="flex py-2 px-2 ees:py-1 ees:px-2 md:p-2 items-center space-x-1 bg-[#849ec0] rounded-lg text-[#20446f]">
+    <div className="flex py-2 px-2 ees:py-1 ees:px-2 md:p-2 items-center space-x-1 bg-primary rounded-lg">
       <FaWallet />
       <span className="flex md:space-x-1 font-semibold  md:text-base">
         <span>ETB.</span>
@@ -50,10 +50,10 @@ const WalletButton = ({ onClick, userProfile }) => (
 const LogoutButton = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="flex items-center border p-2 rounded border-red-500 text-red-500"
+    // className="flex items-center border p-2 rounded border-red-500 text-red-500"
   >
-    <FaSignOutAlt className="mr-1" />
-    <span className="text-base">Logout</span>
+    <FaSignOutAlt className="mr-1 text-red-500 text-3xl" />
+    {/* <span className="text-base">Logout</span> */}
   </button>
 );
 
@@ -131,7 +131,7 @@ const [infoMessage, setInfoMessage] = useState(null);
 
   const isActive = (tab) =>
     activeTab === tab
-      ? "text-[#20446f] font-semibold text-base"
+      ? "text-text font-semibold text-base"
       : "font-semibold text-base";
 
   return (
@@ -152,27 +152,20 @@ const [infoMessage, setInfoMessage] = useState(null);
                 message={error || userStore.error.toString()}
                 type="error"
                 showIcon
-                className="font-bold text-[#20446f] text-lg w-full"
+                className="font-bold text-text text-lg w-full"
               />
             </div>
           </div>
         ))}
 
       {/* Top Navigation Bar */}
-      <header className="bg-white/75 py-1 px-2 ees:px-4 flex justify-between items-center shadow-md mb-2 w-full sm:w-4/5 mx-auto rounded-md">
-        <img src={Logo} alt="Logo" className="h-8 w-auto" />
-        <div className="flex space-x-4 items-center">
-          <WalletButton onClick={() => handleTabChange("/wallet")} userProfile={userStore.userProfile} />
-          <div className=" wallet-login-container ">
-          <LogoutButton onClick={handleLogout} /></div>
-        </div>
-      </header>
-
-      {/* Main Navigation Bar */}
-      <header className="bg-white/75 text-[#20446f] py-2 px-2 ees:px-4 flex justify-between items-center shadow-md mb-6 md:px-15 w-full sm:w-4/5 mx-auto rounded-md">
-        <div className="text-lg md:text-xl font-semibold flex justify-start md:space-x-0 space-x-6 items-center w-full">
+      <div className="flex justify-start items-center space-x-1 mb-6">
+      <img src={Logo} alt="Logo" className="h-20 w-auto" />
+      <header className="bg-bg/75 py-1 px-2 ees:px-4 flex justify-between items-center shadow-md  h-12 w-full sm:w-full mx-auto rounded-md">
+        
+                <div className="text-lg md:text-xl font-semibold flex justify-start md:space-x-0  items-center w-full">
           <button
-            className="lg:hidden sm:mr-4 text-[#20446f]"
+            className="lg:hidden  mr-1 text-text"
             onClick={() => setIsDrawerOpen(!isDrawerOpen)}
           >
             {isDrawerOpen ? <FaTimes /> : <FaBars />}
@@ -183,15 +176,15 @@ const [infoMessage, setInfoMessage] = useState(null);
             >
               <FaHome className="mr-2 md:text-2xl text-lg" />
             </button>
-            <span className="text-base md:text-lg">
+            <span className="text-xs sm:text-sm">
               Welcome,{" "}
-              <span className="text-[#20446f]">
-                {userStore?.userProfile?.username}!
+              <span className="text-text">
+                player!
               </span>
             </span>
           </div>
         </div>
-        <div className="hidden lg:flex space-x-4 pr-14">
+        <div className="mr-2 hidden lg:flex space-x-4 pr-14 text-text">
           {[
             { icon: FaTrophy, label: "Leaderboard", path: "/leaderboard" },
             { icon: FaHistory, label: "History", path: "/history" },
@@ -212,11 +205,18 @@ const [infoMessage, setInfoMessage] = useState(null);
               }}
             >
               <item.icon className="mr-1" />
-              <span className="md:mb-1 w-fit">{item.label}</span>
+              <span className="md:mb-1 w-fit ">{item.label}</span>
             </button>
           ))}
         </div>
+        <div className="flex space-x-4 items-center">
+          <WalletButton onClick={() => handleTabChange("/wallet")} userProfile={userStore.userProfile} />
+          <div className=" wallet-login-container ">
+          <LogoutButton onClick={handleLogout} /></div>
+        </div>
       </header>
+</div>
+
 
       {/* Drawer for small screens */}
       <div
@@ -226,7 +226,7 @@ const [infoMessage, setInfoMessage] = useState(null);
         onClick={() => setIsDrawerOpen(false)}
       ></div>
       <div
-        className={`fixed left-0 top-0 text-[#20446f] h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ${
+        className={`fixed left-0 top-0 text-text h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
         } z-50`}
       >
@@ -237,8 +237,8 @@ const [infoMessage, setInfoMessage] = useState(null);
     <FaUser className="text-gray-500" />
   </div>
   <div className="flex flex-col">
-    <span className="font-semibold">{userStore?.userProfile?.username || "User"}</span>
-    <span className="text-sm text-gray-500">{userStore?.userProfile?.phoneNumber || "No number"}</span>
+    <span className="font-semibold ">{userStore?.userProfile?.username || "User"}</span>
+    <span className="text-sm text-text/75">{userStore?.userProfile?.phoneNumber || "No number"}</span>
   </div>
 </div>
 </div>
@@ -303,7 +303,7 @@ const [infoMessage, setInfoMessage] = useState(null);
           onClick={() => handleTabChange("/wallet", "/wallet")}
         >
           
-            <div className="flex px-4 py-2 items-center space-x-1 w-full bg-[#20446f] rounded-lg text-white">
+            <div className="flex px-4 py-2 items-center space-x-1 w-full bg-primary rounded-lg text-white h-12">
               <FaWallet />
               <span className="flex space-x-2 items-center">
                 <span className="text-sm font-semibold">Wallet: </span>
@@ -320,7 +320,7 @@ const [infoMessage, setInfoMessage] = useState(null);
 
           
         </button>
-        <div className="flex px-4 py-2 items-center justify-start space-x-2 bg-[#20446f] rounded-lg text-white ">
+        <div className="flex px-4 py-2 items-center justify-start space-x-2 bg-primary rounded-lg text-white ">
         <div className="flex space-x-1 items-center"><FaUserPlus/>
               <span className="text-sm font-semibold">Ref code:</span>
               </div>
