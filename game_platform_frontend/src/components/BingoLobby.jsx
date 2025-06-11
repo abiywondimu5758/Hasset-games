@@ -133,36 +133,37 @@ const BingoLobby = observer(() => {
     <div className="bingo-lobby-container bg-text/55">
       {contextHolder}
       <Nav />
-<div className="w-full h-fit mb-20">
-      <div className="content text-center  text-primary rounded-lg px-5 md:px-64 h-fit">
-        <div className=" sm:p-5 rounded-lg bg-gray-800/85 h-fit">
-          <h1 className="sm:text-lg text-base font-semibold py-5 text-white">
+<div className="w-full h-fit mb-20 flex justify-center">
+      <div className=" text-center  text-text rounded-lg px-5 sm:w-2/3 h-fit">
+        <div className=" px-5 md:p-5 rounded-lg bg-bg/85 h-fit">
+          <h1 className="sm:text-md text-base font-bold py-5 text-text">
             Choose Your Stake
           </h1>
 <div className="">
-            <div className="flex justify-between items-center bg-primary p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div className="flex justify-between items-center bg-text p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
             <div className="w-16">
-              <div className="font-semibold text-sm sm:text-lg text-white">Stake</div>
+              <div className="font-semibold text-sm md:text-lg text-white">Stake</div>
             </div>
             <div className="w-16">
-              <div className="font-semibold text-sm sm:text-lg text-white">
+              <div className="font-semibold text-sm md:text-lg text-white">
               Active
               </div>
             </div>
             <div className="w-16">
-              <div className="font-semibold text-xs sm:text-lg text-white">
+              <div className="font-semibold text-xs md:text-lg text-white">
               Win
               </div>
             </div>
             <div className="w-16">
-            <div className="font-semibold text-sm sm:text-lg text-white">
+            <div className="font-semibold text-sm md:text-lg text-white">
               Join
             </div></div>
           </div>
           </div>
           
           <div className="h-fit py-6">
-        {userGameData?.inGame&&(  <div className="flex flex-col items-start w-full"><span className="text-sm pl-2 text-red-700 font-bold">Current Game</span>        <div key={userGameData.gameId} className ="w-full flex justify-between items-center bg-[#1c6758] border-gray-800/85 p-1 ees:p-2 sm:p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow mb-2">
+        {userGameData?.inGame&&(  
+          <div className="flex flex-col items-start w-full"><span className="text-sm pl-2 text-red-700 font-bold">Current Game</span>        <div key={userGameData.gameId} className ="w-full flex justify-between items-center bg-text border-gray-800/85 p-1 ees:p-2 sm:p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow mb-2">
             <div className="w-16">
               <h2 className="text-sm sm:text-xl font-semibold text-white">{userGameData.stake.amount} birr</h2>
             </div>
@@ -186,7 +187,7 @@ const BingoLobby = observer(() => {
                 onClick={
                     () => handleJoinBack()
                 }
-                className={` bg-[#43a046] px-3 text-white w-full py-1 ees:py-1 sm:py-2  text-xs sm:text-sm sm:text-xs sm:py-2 sm:px-4 rounded-lg cursor-pointer`}
+                className={` bg-primary px-3 text-white w-full py-1 ees:py-1 sm:py-2  text-xs sm:text-sm sm:text-xs sm:py-2 sm:px-4 rounded-lg cursor-pointer`}
               >
                 
                   <div className="flex items-center justify-center space-x-1">
@@ -197,16 +198,16 @@ const BingoLobby = observer(() => {
               </button>
             </div>
           </div>
-          <span className="text-sm pl-2 text-[#1c6758] font-bold">New Game</span> 
+          <span className="text-sm pl-2 text-text font-bold">New Game</span> 
           </div>)}
           <div className="flex flex-col space-y-2">
         {stakes.map((stake) => (
-          <div key={stake.id} className ="flex justify-between items-center bg-[#1c6758]/75 p-1 ees:p-2 sm:p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div key={stake.id} className ="flex justify-between items-center bg-text/75 p-1 ees:p-2 md:p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow">
             <div className="w-16">
-              <h2 className="text-xs ees:text-sm sm:text-lg font-semibold text-white">{stake.amount} birr</h2>
+              <h2 className="text-xs ees:text-sm md:text-lg font-semibold text-white">{stake.amount} birr</h2>
             </div>
             <div className="w-16">
-              <div className="text-xs ees:text-sm sm:text-lg font-semibold text-white">
+              <div className="text-xs ees:text-sm md:text-lg font-semibold text-white">
                 {gameStatuses[stake.id] === "None" && (
                   <span className="font-normal text-white">None</span>
                 )}
@@ -232,7 +233,7 @@ const BingoLobby = observer(() => {
               </div>
             </div>
             <div className="w-16">
-              <div className="text-sm sm:text-xl text-white">
+              <div className="text-sm md:text-xl text-white">
                 {possibleWin[stake.id] ? (
                   <span>{possibleWin[stake.id]} birr</span>
                 ) : (
@@ -246,8 +247,8 @@ const BingoLobby = observer(() => {
                    () => handleJoin(stake.id)
                 }
                 className={`
-                  bg-[#43a046] px-2
-                 text-white w-full py-1 ees:py-1 sm:py-2  text-xs sm:text-sm sm:text-xs sm:py-2 sm:px-4 rounded-lg cursor-pointer`}
+                  bg-primary px-2
+                 text-white w-full py-1 ees:py-1 md:py-2  text-xs md:text-sm md:text-xs md:py-2 sm:px-4 rounded-lg cursor-pointer`}
               >
                 
                   <div className="flex items-center justify-center space-x-1">

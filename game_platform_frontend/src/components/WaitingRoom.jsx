@@ -148,17 +148,17 @@ const WaitingRoom = () => {
     );
     if (currentPlayer) {
       return currentPlayer.userId === userId
-        ? "bg-[#1c6758] text-white border-[#1c6758]"
+        ? "bg-text text-white border-text"
         : "bg-red-500 text-white border-red-500";
     }
-    return "bg-white border-[#263238]";
+    return "bg-white border-text";
   };
 
 
   return (
     <>
       {contextHolder}
-      <div className="min-h-screen  pb-20 bg-[#1c6758]/75 w-full">
+      <div className="min-h-screen  pb-20 bg-text/75 w-full">
       <Nav />
         {error || userStore.error && (
           <div className="w-full flex justify-center items-center">
@@ -167,14 +167,14 @@ const WaitingRoom = () => {
                 message={error || userStore.error.toString()}
                 type="error"
                 showIcon
-                className="font-bold text-[#263238] text-lg w-full"
+                className="font-bold text-text text-lg w-full"
               />
             </div>
           </div>
         )}
-        <div className="flex flex-col w-full items-center text-[#263238] px-5">
-        <div className="bg-gray-800/60 w-full sm:w-1/2 h-fit rounded-b-lg rounded-t-xl">
-          <div className="px-2 py-1 bg-gray-800/75 flex-col justify-end rounded-t-lg items-end">
+        <div className="flex flex-col w-full items-center text-text px-5">
+        <div className="bg-bg/60 w-full sm:w-2/3 h-fit rounded-b-lg rounded-t-xl">
+          <div className="px-2 py-1 bg-text flex-col justify-end rounded-t-lg rounded-b-lg items-end">
             <div className="flex w-full items-center justify-between">
               <div className="sm:text-lg text-lg font-bold py-2 text-white">
                 {gameData.stake?.amount} Birr Per Card
@@ -207,11 +207,11 @@ const WaitingRoom = () => {
           </div>
           <div className="scroll-auto overflow-y-auto">
             {isCardsLoading && <div className='mt-2'><Spinner color={'#263238'}/></div>}
-            <div className="grid grid-cols-8 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-12 gap-2 p-3 overflow-y-auto">
+            <div className="grid grid-cols-7 es:grid-cols-8  md:grid-cols-9 lg:grid-cols-12 gap-2 p-3 overflow-y-auto">
               {bingoCards.map((bingoCard, index) => (
                 <button
                   key={bingoCard.id}
-                  className={`w-10 h-8 sm:w-12 sm:h-12 text-black rounded-lg flex items-center justify-center text-sm sm:text-sm font-bold border-2 border-[#1c6758] cursor-pointer shadow-md ${getCardColor(
+                  className={`w-10 h-8 sm:w-[36px] sm:h-10 md:w-12 md:h-12 text-black rounded-lg flex items-center justify-center text-sm sm:text-sm font-bold border-2 border-[#1c6758] cursor-pointer shadow-md ${getCardColor(
                     bingoCard
                   )}`}
                   onClick={() => openModal(bingoCard)}
