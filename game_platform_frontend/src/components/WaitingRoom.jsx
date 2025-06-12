@@ -247,10 +247,10 @@ const Modal = ({ isOpen, onClose, cardData, gameId }) => {
     onClose();
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75 px-10">
-      <div className="bg-gray-900 p-12 w-full sm:w-[320px] rounded-lg shadow-lg text-white flex flex-col items-center justify-center space-y-4">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-text bg-opacity-45 px-10">
+      <div className="bg-bg p-12 w-full sm:w-[320px] rounded-lg shadow-lg text-white flex flex-col items-center justify-center space-y-4">
         
-        <h2 className=" text-2xl mb-2 font-bold">
+        <h2 className=" text-2xl mb-2 font-bold text-text">
           BINGO CARD {cardData.id}
         </h2>
 
@@ -260,7 +260,7 @@ const Modal = ({ isOpen, onClose, cardData, gameId }) => {
       <div
         key={`${rowIndex}-${colIndex}`}
         className={`w-10 h-10 flex items-center justify-center font-bold rounded relative ${
-          row[colIndex] === 100 ? "bg-red-600" : "bg-[#43a046]"
+          row[colIndex] === 100 ? "bg-primary" : "bg-text"
         }`}
       >
         {rowIndex === 0 && colIndex === 0 ? (
@@ -277,13 +277,13 @@ const Modal = ({ isOpen, onClose, cardData, gameId }) => {
 
         <div className="flex space-x-2">
         <button
-          className="w-full py-1 px-3 text-white rounded text-sm md:text-base font-semibold bg-[#43a046] hover:bg-[#388e3b]"
+          className="w-full py-1 px-3 text-white rounded text-sm md:text-base font-semibold bg-primary hover:bg-primary/80"
           onClick={() => updateGame(gameId, cardData.id)}
         >
           Choose
         </button>
         <button
-          className="w-full py-1 px-3 flex justify-center items-center border-gray-400 text-sm font-semibold sm:text-base border-[1px] rounded-md hover:bg-gray-400 hover:text-white"
+          className="w-full py-1 px-3 flex justify-center items-center border-text text-sm font-semibold sm:text-base border-[1px] rounded-md hover:bg-text hover:text-white text-text"
           onClick={() => onClose()}
         >
           Cancel

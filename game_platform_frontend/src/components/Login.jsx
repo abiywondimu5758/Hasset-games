@@ -55,10 +55,10 @@ const LoginForm = () => {
     <div className="flex justify-center items-center p-6 bg-bg/75 w-full h-screen text-text">
 
       <div className="w-full max-w-sm mx-auto h-fit  bg-bg rounded shadow-xl backdrop-blur-xl">
-      <div className="px-6 pt-6">
-        {/* <img src='/assets/Asset1.svg' alt="Logo"/> */}
+      <div className=" flex items-center justify-center items-center w-full h-full">
+        <img src='/assets/logo.svg' alt="Logo"className="w-28"/>
       </div>
-      <hr className="border-t-1 border-primary opacity-20 w-full mt-4 mb-2" />
+      {/* <hr className="border-t-1 border-primary opacity-20 w-full mt-4 mb-2" /> */}
       <div className="px-6 pb-4">
       <h2 className="text-xl md:text-2xl text-primary font-semibold mb-4 text-center">
         Login

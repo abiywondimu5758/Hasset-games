@@ -229,7 +229,7 @@ const Game = () => {
   return (
     <>
       {contextHolder}
-      <div className="min-h-screen  pb-20 bg-[#1c6758]/75 w-full">
+      <div className="min-h-screen  pb-20 bg-text/75 w-full">
       <Nav />
 
         {userStore.error && (
@@ -239,35 +239,35 @@ const Game = () => {
                 message={userStore.error.toString()}
                 type="error"
                 showIcon
-                className="font-bold text-[#263238] text-lg w-full"
+                className="font-bold text-text text-lg w-full"
               />
             </div>
           </div>
         )}
-        <div className="flex flex-col w-full items-center text-[#263238] px-2 ss:px-5 sss:px-6">
-        <div className="bg-green-300 w-full sm:w-fit 638px:w-[300px] sm:p-2 p-1 h-fit rounded-b-lg rounded-t-xl">
-          <div className="px-2 sm:py-2 py-1 bg-green-600 flex-col justify-end rounded-lg items-end">
+        <div className="flex flex-col w-full items-center text-text px-2 ss:px-5 sss:px-6">
+        <div className="bg-bg w-full sm:w-fit 638px:w-[300px] sm:p-2 p-1 h-fit rounded-b-lg rounded-t-xl">
+          <div className="px-2 sm:py-2 py-1 bg-text flex-col justify-end rounded-lg items-end">
             <div className="flex w-full items-center justify-between  mb-2">
               <div className="flex space-x-1 sm:space-x-4  justify-center text-white items-center ">
-                <div className="flex flex-col items-center bg-[#263238]  text-white px-2 py-1 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center bg-bg  text-text px-2 py-1 rounded-lg shadow-lg">
                   <div className="font-bold text-[10px] es:text-xs sm:text-sm">Stake</div>
                   <div className="text-xs font-semibold">
                     {gameData?.stake.amount}
                   </div>
                 </div>
-                <div className="flex flex-col items-center bg-[#263238]  text-white px-2 py-1 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center bg-bg  text-text px-2 py-1 rounded-lg shadow-lg">
                   <div className="font-bold text-[10px] es:text-xs sm:text-sm">Players</div>
                   <div className="text-xs font-semibold">
                     {gameData?.players.length}
                   </div>
                 </div>
-                <div className="flex flex-col items-center bg-[#263238]  text-white px-2 py-1 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center bg-bg  text-text px-2 py-1 rounded-lg shadow-lg">
                   <div className="font-bold text-[10px] es:text-xs sm:text-sm">win</div>
                   <div className="text-xs font-semibold">
                     {gameData?.possibleWin}
                   </div>
                 </div>
-                <div className="flex flex-col items-center bg-[#263238]  text-white px-2 py-1 rounded-lg shadow-lg">
+                <div className="flex flex-col items-center bg-bg  text-text px-2 py-1 rounded-lg shadow-lg">
                   <div className="font-bold text-[10px] es:text-xs sm:text-sm">Call</div>
                   <div className="text-xs font-semibold">
                     {drawnNumbers.length}
@@ -275,7 +275,7 @@ const Game = () => {
                 </div>
               </div>
               <div className="flex space-x-2 cursor-pointer items-center justify-center">
-                <span className="font-bold text-xs es:text-sm">Auto play</span>
+                <span className="font-bold text-xs es:text-sm text-white">Auto play</span>
                 <button
                   onClick={() =>
                     handlAutoPlay(gameData?.id, cardId, !player?.autoPlay)
@@ -291,13 +291,13 @@ const Game = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:items-center items-between h-fit pb-2 text-white bg-green-300 w-full px-2 sm:px-2 rounded">
+            <div className="flex flex-col sm:items-center items-between h-fit pb-2 text-white bg-bg w-full px-2 sm:px-2 rounded">
               {/* Top Info Panel */}
 
               <div className="flex flex-row  space-x-1 sm:space-y-0 sm:flex-row mt-2 sm:space-x-1 justify-between">
                 {/* Bingo Drawn */}
-                <div className="bg-green-400  rounded-lg shadow-lg w-fit h-fit">
-                  <div className="flex flex-col items-center p-1 sm:p-4 w-fit px-2 bg-green-600 rounded-lg shadow-lg ">
+                <div className="bg-text  rounded-lg shadow-lg w-fit h-fit">
+                  <div className="flex flex-col items-center p-1 sm:p-4 w-fit px-2 bg-text rounded-lg shadow-lg ">
                     {/* Render Bingo numbers */}
                     <div className="grid grid-cols-5 gap-1 sm:gap-2">
                       {["B", "I", "N", "G", "O"].map((letter, idx) => (
@@ -316,7 +316,7 @@ const Game = () => {
                               key={`${idx}-${numberIdx}`}
                               className={`w-4 h-4 text-[10px] es:w-6 es:h-6 es:text-xs sm:w-6 mb-1  sm:h-6 sm:text-[13px]  rounded-full flex items-center justify-center ${
                                 currentNumber === number
-                                  ? "bg-[#263238] text-white"
+                                  ? "bg-primary text-white"
                                   : drawnNumbers.includes(number)
                                   ? "bg-red-500 text-white"
                                   : "bg-white text-[#263238]"
@@ -332,7 +332,7 @@ const Game = () => {
                 </div>
                 <div className="flex flex-col  items-center space-y-2 pt-10 sm:space-x-4">
                   <div className="flex flex-col items-center mx-8">
-                    <div className="bg-green-600 sm:p-4 rounded-full flex flex-col items-center justify-center shadow-lg w-20 h-20 sm:h-20 sm:w-20">
+                    <div className="bg-text sm:p-4 rounded-full flex flex-col items-center justify-center shadow-lg w-20 h-20 sm:h-20 sm:w-20">
                       <div className="text-white text-xl font-bold">
                         {/* Display the current number with corresponding letter */}
                         {currentNumber
@@ -358,7 +358,7 @@ const Game = () => {
                   </div>
 
                   <div className="flex flex-col space-y-2 items-center mt-4">
-                    <div className="grid grid-cols-5 gap-1 bg-green-600 sm:p-3 p-2 rounded w-fit">
+                    <div className="grid grid-cols-5 gap-1 bg-text sm:p-3 p-2 rounded w-fit">
                       {playerCards.length > 0 &&
                         playerCards[0].map((_, colIndex) =>
                           playerCards.map((row, rowIndex) => (
@@ -366,7 +366,7 @@ const Game = () => {
                               key={`${rowIndex}-${colIndex}`}
                               className={`sm:w-[26px] sm:h-[26px] h-6 w-6 ees:h-8 ees:w-8 text-xs sm:text-sm flex items-center justify-center font-bold text-[#263238] rounded relative cursor-pointer ${
                                 markedNumbers.includes(row[colIndex])
-                                  ? "bg-[#263238] text-white"
+                                  ? "bg-primary text-white"
                                   : "bg-white"
                               }`}
                               onClick={() =>
@@ -385,7 +385,7 @@ const Game = () => {
                         )}
                     </div>
                     <button
-                      className="w-full px-2 py-2 text-white rounded text-sm font-semibold bg-[#263238]"
+                      className="w-full px-2 py-2 text-white rounded text-sm font-semibold bg-primary"
                       onClick={() => handleBingo()}
                     >
                       Bingo
@@ -426,7 +426,7 @@ const Modal = ({
   const isUserWinner = winnersId.includes(userId);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75 px-10">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-text bg-opacity-75 px-10">
       {isUserWinner && (
         <Confetti
           width={window.innerWidth}
@@ -436,19 +436,19 @@ const Modal = ({
         />
       )}
 
-      <div className="bg-gray-900 p-12 w-full sm:w-[320px] rounded-lg shadow-lg text-white flex flex-col items-center justify-center space-y-4">
+      <div className="bg-bg py-12 sm:p-12 w-full sm:w-[320px] rounded-lg shadow-lg text-text flex flex-col items-center justify-center space-y-4">
         {isUserWinner ? (
           isMultipleWinners ? (
-            <h1 className="sm:text-lg text-lg font-semibold text-white mb-2">
+            <h1 className="sm:text-lg text-lg font-semibold  mb-2">
               Split decision! Your share is {possibleWin} birr!
             </h1>
           ) : (
-            <h1 className="sm:text-lg text-lg font-semibold text-white mb-2">
+            <h1 className="sm:text-lg text-lg font-semibold  mb-2">
               You have won {possibleWin} birr!
             </h1>
           )
         ) : (
-          <h1 className="sm:text-lg text-lg font-semibold text-white mb-2 animate-shake">
+          <h1 className="sm:text-lg text-lg font-semibold  mb-2 animate-shake">
             You lose.
           </h1>
         )}
@@ -466,9 +466,9 @@ const Modal = ({
             return (
             <div
               key={index}
-              className="flex flex-col items-center space-y-2 bg-green-600 p-4 rounded"
+              className="flex flex-col items-center space-y-2 bg-text p-4 rounded"
             >
-              <h2 className="text-lg font-bold mb-2">
+              <h2 className="text-lg font-bold text-white mb-2">
               {isMultipleWinners
                 ? `Winner ${index + 1} card`
                 : `Winner's card`}
@@ -481,7 +481,7 @@ const Modal = ({
                   key={`${rowIndex}-${colIndex}`}
                   className={`sm:w-[26px] sm:h-[26px] h-8 w-8 text-xs sm:text-sm flex items-center justify-center font-bold text-[#263238] rounded relative cursor-pointer ${
                   markedNumbers.includes(row[colIndex])
-                    ? "bg-[#263238] text-white"
+                    ? "bg-primary text-white"
                     : "bg-white"
                   }`}
                 >
@@ -495,7 +495,7 @@ const Modal = ({
         })}
 
         <button
-          className="w-32 p-3 text-white rounded text-sm font-semibold bg-green-600 hover:bg-green-700"
+          className="w-28 py-2 text-white rounded text-sm font-semibold bg-primary hover:bg-primary/80"
           onClick={onClose}
         >
           Continue
