@@ -231,7 +231,8 @@ const [infoMessage, setInfoMessage] = useState(null);
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
         } z-50`}
       >
-<div className="flex justify-between items-center px-4 pt-4 pb-6 border-b">
+        <div className="flex flex-col border-b px-4 pt-4 pb-2">
+<div className="flex justify-between items-center">
 
 <div className="flex items-center space-x-4">
   <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
@@ -242,6 +243,13 @@ const [infoMessage, setInfoMessage] = useState(null);
     <span className="text-sm text-text/75">{userStore?.userProfile?.phoneNumber || "No number"}</span>
   </div>
 </div>
+</div>
+            <span className="text-lg pt-4 font-semibold">
+              Welcome,{" "}
+              <span className="text-primary font-bold">
+                player!
+              </span>
+            </span>
 </div>
 <div className="flex flex-col px-4 pt-3 pb-6 space-y-3">
 

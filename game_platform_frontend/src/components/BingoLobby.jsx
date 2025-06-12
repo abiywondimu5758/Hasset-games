@@ -134,8 +134,8 @@ const BingoLobby = observer(() => {
       {contextHolder}
       <Nav />
 <div className="w-full h-fit mb-20 flex justify-center">
-      <div className=" text-center  text-text rounded-lg px-5 sm:w-2/3 h-fit">
-        <div className=" px-5 md:p-5 rounded-lg bg-bg/85 h-fit">
+      <div className="px-2 ees:px-0 text-center  text-text rounded-lg sm:px-5 ees:w-[340px] es:w-[370px] ss:w-[400px] sm:w-[490px] md:w-2/3 h-fit">
+        <div className=" px-5 md:p-5 rounded-lg bg-bgdark/85 h-fit">
           <h1 className="sm:text-md text-base font-bold py-5 text-text">
             Choose Your Stake
           </h1>
