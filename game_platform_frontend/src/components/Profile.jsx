@@ -109,7 +109,7 @@ const Profile = () => {
       {contextHolder}
       <Nav />
 <div className="px-5 sm:px-0 mb-20">
-      <div className="max-w-md mx-auto p-6 bg-bg/85 rounded-lg shadow-lg">
+      <div className="max-w-md mx-auto p-6 bg-bgdark/85 rounded-lg shadow-lg">
         <h2 className="text-xl font-bold mb-4 text-text text-center">
           Profile
         </h2>
@@ -123,7 +123,7 @@ const Profile = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="w-full p-2  text-text border border-text rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold bg-[#849ec0]"
+              className="w-full p-2  text-text border border-text rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold bg-bgdark"
             />
             {isChecking && (
               <div className="w-full flex justify-start mt-1">
@@ -153,7 +153,7 @@ const Profile = () => {
               name="phoneNumber"
               value={userStore.userProfile?.phoneNumber || ""}
               disabled={true}
-              className="w-full p-2 border border-text/50 rounded focus:border-none focus:ring-2 focus:ring-[#66bb69] focus:outline-none text-xs font-semibold text-text/70 bg-[#849ec0]"
+              className="w-full p-2 border border-text/50 rounded focus:border-none focus:ring-2 focus:ring-[#66bb69] focus:outline-none text-xs font-semibold text-text/70 bg-bgdark"
             />
           </div>
 

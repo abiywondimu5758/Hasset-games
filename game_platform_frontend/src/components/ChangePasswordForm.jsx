@@ -93,7 +93,7 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
+              className="w-full p-2 border border-text bg-bgdark rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"
@@ -117,7 +117,7 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
+              className="w-full p-2 border border-text bg-bgdark rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"
@@ -147,7 +147,7 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
+              className="w-full p-2 border border-text bg-bgdark rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"

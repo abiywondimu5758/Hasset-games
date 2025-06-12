@@ -46,7 +46,7 @@ const Referrals = () => {
 
         {data && (
           <div className="p-4 flex flex-col items-center text-[#E0E0E0]">
-            <div className="bg-[#849ec0]/85 mx-auto rounded-md w-full flex flex-col items-center pt-2">
+            <div className="bg-bgdark/85 mx-auto rounded-md w-full flex flex-col items-center pt-2">
             <h2 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-5">
               Referral History
             </h2>
@@ -70,7 +70,7 @@ const Referrals = () => {
             <div className="overflow-x-auto w-full rounded-md">
               <table className="min-w-full">
                 <thead>
-                  <tr className="text-[10px] sm:text-sm bg-[#849ec0]/75 mx-auto rounded-md">
+                  <tr className="text-[10px] sm:text-sm bg-bgdark/75 mx-auto rounded-md">
                     <th className="p-1 sm:p-3 w-4 rounded-tl-md text-center">Username</th>
                     <th className="p-1 sm:p-3 text-center">Phone Number</th>
                     <th className="p-1 sm:p-3 rounded-tr-md text-center">Referral Date</th>

@@ -141,7 +141,7 @@ const HowToPlay = () => {
       <Nav />
       <div className="flex justify-center mt-4">
         <select
-          className="px-4 py-2 mx-2 rounded bg-[#849ec0] text-[#20446f] font-semibold"
+          className="px-4 py-2 mx-2 rounded bg-bgdark text-[#20446f] font-semibold"
           value={language}
           onChange={(e) => handleLanguageChange(e.target.value)}
         >
@@ -152,14 +152,14 @@ const HowToPlay = () => {
         </select>
       </div>
       <div className="flex-grow container mx-auto p-6">
-        <div className="bg-[#849ec0]/85 shadow-lg border-[#849ec0] rounded-xl overflow-hidden p-6 mb-6">
+        <div className="bg-bgdark/85 shadow-lg border-bgdark rounded-xl overflow-hidden p-6 mb-6">
           <h1 className="text-4xl font-bold text-[#20446f] mb-4">{content[language].title}</h1>
           <p className="text-[#20446f] mb-4">
             {language === 'en' ? 'Here are the steps to get started:' : language === 'am' ? 'እነሆ መጀመሪያ ለመጀመር ያስፈልጉት እርምጃዎች:' : language === 'om' ? 'Akkaataa itti Taphattan:' : 'እነሆ መጀመሪያ ለመጀመር ያስፈልጉት እርምጃዎች:'}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {content[language].steps.map((step, index) => (
-              <div key={index} className="bg-[#849ec0] p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+              <div key={index} className="bg-bgdark p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow">
                 <FaGamepad className="text-[#20446f] text-3xl mb-2" />
                 <h2 className="text-2xl text-[#20446f] font-semibold mb-2">{`Step ${index + 1}`}</h2>
                 <p className="text-[#20446f]">{step}</p>
@@ -168,7 +168,7 @@ const HowToPlay = () => {
           </div>
         </div>
         
-        <div className="bg-[#849ec0]/85 shadow-lg border-[#849ec0] rounded-xl overflow-hidden p-6">
+        <div className="bg-bgdark/85 shadow-lg border-bgdark rounded-xl overflow-hidden p-6">
           <h2 className="text-3xl font-bold text-[#20446f] mb-4">{language === 'en' ? 'Game Rules' : language === 'am' ? 'የጨዋታ መመሪያዎች' : language === 'om' ? 'Seerota Taphaa' : 'እቲ መመሪያ ተኸታተል።'}</h2>
           <p className="text-[#20446f] mb-4">
             {language === 'en' ? 'Here are the basic rules of the game:' : language === 'am' ? 'እነሆ የጨዋታው መሠረታዊ መመሪያዎች:' : language === 'om' ? 'Akkaataa itti Taphattan:' : 'እቲ መመሪያ ተኸታተል።'}
@@ -182,7 +182,7 @@ const HowToPlay = () => {
         </div>
 
         <div className="flex-grow container mx-auto p-6">
-        <div className="bg-[#849ec0]/85 shadow-lg border-[#849ec0] rounded-xl overflow-hidden p-6">
+        <div className="bg-bgdark/85 shadow-lg border-bgdark rounded-xl overflow-hidden p-6">
           <h2 className="text-3xl font-bold text-[#20446f] mb-4">{language === 'en' ? 'Bingo Game Bonus System' : language === 'am' ? 'ቢንጎ ጨዋታ ቦነስ ስርዓት' : language === 'om' ? 'Sirna bonasii tapha Bingo' : 'ቢንጎ ጸወታ ቦነስ ስርዓት'}</h2>
           <p className="text-[#20446f] mb-4">
             {language === 'en' ? 'Bingo Game Bonus System' : language === 'am' ? 'ብቁ ማረግያ መስፈርቶች' : language === 'om' ? 'Ulaagaalee gahumsaa' : 'ናይ ብቕዓት ረቛሒታት'}

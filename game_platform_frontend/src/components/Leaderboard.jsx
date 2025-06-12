@@ -90,7 +90,7 @@ const Leaderboard = () => {
       <div className="bg-[#20446f]/75 min-h-screen pb-20" >
         <Nav />
         <div className="px-5 sm:px-0 mb-20">
-        <div className="bg-[#849ec0]/85  text-[#20446f] p-6 rounded-xl max-w-lg mx-auto shadow-lg h-fit">
+        <div className="bg-bgdark/85  text-[#20446f] p-6 rounded-xl max-w-lg mx-auto shadow-lg h-fit">
           <div className="flex justify-between items-center mb-5">
             <h2 className="sm:text-lg text-base font-semibold text-white">
               Leaderboard
@@ -125,7 +125,7 @@ const Leaderboard = () => {
                 children: (
                   <>
                     {isPending && <Spinner />}
-                    <div className="flex justify-between p-2 sm:p-3 text-[#20446f] text-base items-center bg-[#849ec0]/65 rounded-lg">
+                    <div className="flex justify-between p-2 sm:p-3 text-[#20446f] text-base items-center bg-bgdark/65 rounded-lg">
                       {["weekly", "monthly", "yearly"].map((timeFrame) => (
                         <div
                           key={timeFrame}
@@ -141,7 +141,7 @@ const Leaderboard = () => {
                         </div>
                       ))}
                     </div>
-                    <div className="flex justify-around items-end mt-8 mb-6 bg-[#849ec0]/65 p-2 rounded-lg">
+                    <div className="flex justify-around items-end mt-8 mb-6 bg-bgdark/65 p-2 rounded-lg">
                       {topThreePlayers.map((player, index) => (
                         <div
                           key={index}
@@ -168,7 +168,7 @@ const Leaderboard = () => {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-8 rounded-lg bg-[#849ec0]/65 p-2">
+                    <div className="mt-8 rounded-lg bg-bgdark/65 p-2">
                       {currentPlayers.map((player, index) => (
                         <div
                           key={index}

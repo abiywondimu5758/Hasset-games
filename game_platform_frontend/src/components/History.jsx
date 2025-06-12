@@ -41,7 +41,7 @@ export const History = () => {
   return (
     <>
       {contextHolder}
-      <div className=" min-h-screen text-white px-2 sm:px-4 bg-[#20446f]/75">
+      <div className=" min-h-screen text-white px-2 sm:px-4 bg-text/75">
         <Nav />
         <div className="px-1 sm:px-0 mb-20">
         {isPending && (
@@ -51,14 +51,14 @@ export const History = () => {
         )}
         {!isPending && data?.gameHistory?.length > 0 && (
           <div className="p-4 sm:p-6 flex flex-col items-center text-[#f1f1f1]">
-           <div className="bg-[#849ec0]/75 mx-auto rounded-md w-full flex flex-col items-center pt-2">
+           <div className="bg-bgdark/75 mx-auto rounded-md w-full flex flex-col items-center pt-2">
             <h2 className="text-lg sm:text-2xl font-bold mb-2 ">
               Game History
             </h2>
             <div className="overflow-x-auto w-full rounded-md">
               <table className="min-w-full">
                 <thead>
-                  <tr className="text-[10px] sm:text-sm bg-[#849ec0] mx-auto rounded-md">
+                  <tr className="text-[10px] sm:text-sm bg-bgdark mx-auto rounded-md">
                     <th className="p-1 sm:p-3 w-4 rounded-tl-md text-center">Game ID</th>
                     <th className="p-1 sm:p-3 text-center">Stake</th>
                     <th className="p-1 sm:p-3 text-center">Win</th>
