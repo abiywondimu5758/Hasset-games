@@ -87,10 +87,10 @@ const Leaderboard = () => {
     <>
       {contextHolder}
       {/* className="bg-gray-900" */}
-      <div className="bg-[#20446f]/75 min-h-screen pb-20" >
+      <div className="bg-text/75 min-h-screen pb-20" >
         <Nav />
         <div className="px-5 sm:px-0 mb-20">
-        <div className="bg-bgdark/85  text-[#20446f] p-6 rounded-xl max-w-lg mx-auto shadow-lg h-fit">
+        <div className="bg-bgdark/85  text-text p-6 rounded-xl max-w-lg mx-auto shadow-lg h-fit">
           <div className="flex justify-between items-center mb-5">
             <h2 className="sm:text-lg text-base font-semibold text-white">
               Leaderboard
@@ -125,13 +125,13 @@ const Leaderboard = () => {
                 children: (
                   <>
                     {isPending && <Spinner />}
-                    <div className="flex justify-between p-2 sm:p-3 text-[#20446f] text-base items-center bg-bgdark/65 rounded-lg">
+                    <div className="flex justify-between p-2 sm:p-3 text-text text-base items-center bg-bgdark/65 rounded-lg">
                       {["weekly", "monthly", "yearly"].map((timeFrame) => (
                         <div
                           key={timeFrame}
                           className={`${
                             activeTimeFrame === timeFrame
-                              ? "bg-[#20446f] text-white"
+                              ? "bg-text text-white"
                               : "bg-[#DFEAF8]/95 text-black"
                           } px-2 py-2 sm:px-4 sm:py-2 rounded-lg cursor-pointer`}
                           onClick={() => fetchData(timeFrame)}
@@ -159,10 +159,10 @@ const Leaderboard = () => {
                             </span>
                           )}
                           <span className="text-5xl sm:text-6xl">👤</span>
-                          <div className="text-xs text-[#20446f] sm:text-sm font-bold mt-2">
+                          <div className="text-xs text-text sm:text-sm font-bold mt-2">
                             {player.username}
                           </div>
-                          <div className="text-[#20446f] text-lg sm:text-xl font-bold">
+                          <div className="text-text text-lg sm:text-xl font-bold">
                             {player.amountWon}
                           </div>
                         </div>
@@ -172,15 +172,15 @@ const Leaderboard = () => {
                       {currentPlayers.map((player, index) => (
                         <div
                           key={index}
-                          className="flex justify-between items-center py-3 border-b  border-[#20446f]"
+                          className="flex justify-between items-center py-3 border-b  border-text"
                         >
                           <div className="flex items-center">
                             <span className="text-4xl mr-3">👤</span>
-                            <div className="text-sm font-bold text-[#20446f]">
+                            <div className="text-sm font-bold text-text">
                               {player.username}
                             </div>
                           </div>
-                          <div className="text-lg font-bold text-[#20446f]">
+                          <div className="text-lg font-bold text-text">
                             {player.amountWon}
                           </div>
                         </div>

@@ -39,7 +39,7 @@ const Referrals = () => {
   return (
     <>
       {contextHolder}
-      <div className=" min-h-screen text-white bg-[#20446f]/75">
+      <div className=" min-h-screen text-white bg-text/75">
         <Nav />
         <div className="px-5 sm:px-0 mb-20">
         {isPending && <Spinner className="p-4" />}
