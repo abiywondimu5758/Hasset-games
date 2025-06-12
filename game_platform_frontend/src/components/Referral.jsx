@@ -70,7 +70,7 @@ const Referrals = () => {
             <div className="overflow-x-auto w-full rounded-md">
               <table className="min-w-full">
                 <thead>
-                  <tr className="text-[10px] sm:text-sm bg-bgdark/75 mx-auto rounded-md">
+                  <tr className="text-[10px] sm:text-sm bg-text mx-auto rounded-md text-white">
                     <th className="p-1 sm:p-3 w-4 rounded-tl-md text-center">Username</th>
                     <th className="p-1 sm:p-3 text-center">Phone Number</th>
                     <th className="p-1 sm:p-3 rounded-tr-md text-center">Referral Date</th>
@@ -81,7 +81,7 @@ const Referrals = () => {
                     <tr
                       key={referral.id}
                       className={`${
-                        index % 2 === 0 ? "bg-text/75" : "bg-bgdark/75"
+                        index % 2 === 0 ? "bg-text/55" : "bg-text/85"
                       } text-[10px] sm:text-sm hover:bg-text transition-all text-whitte`}
                     >
                       <td className="p-1 sm:p-3 text-center">{referral.referredUsername}</td>

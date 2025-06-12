@@ -170,18 +170,19 @@ const [infoMessage, setInfoMessage] = useState(null);
           >
             {isDrawerOpen ? <FaTimes /> : <FaBars />}
           </button>
-          <div className="flex space-x-0" onClick={() => handleTabChange("/dashboard")}>
+          <div className="flex space-x-0 text-text items-center" onClick={() => handleTabChange("/dashboard")}>
             <button
-              className={`hidden lg:flex items-center ${isActive("/dashboard")}`}
+              className={`hidden sm:flex items-center ${isActive("/dashboard")}`}
             >
-              <FaHome className="mr-2 md:text-2xl text-lg" />
+              <FaHome className="text-2xl ml-2 sm:ml-2 sm:mr-1" />
             </button>
-            <span className="text-xs sm:text-sm">
+            <span className="text-xs sm:text-sm hidden sm:inline-block">
               Welcome,{" "}
-              <span className="text-text">
+              <span className="text-primary">
                 player!
               </span>
             </span>
+            <span className="text-sm sm:hidden font-semibold pl-2 sm:pl-0">Home</span>
           </div>
         </div>
         <div className="mr-2 hidden lg:flex space-x-4 pr-14 text-text">

@@ -133,7 +133,7 @@ const BonusLeaderboard = () => {
         </>
       ) : (
         <div className="w-full flex justify-center">
-          <p className="text-white font-semibold text-lg">
+          <p className="text-text font-semibold text-lg">
             No leaderboard data for this period.
           </p>
         </div>

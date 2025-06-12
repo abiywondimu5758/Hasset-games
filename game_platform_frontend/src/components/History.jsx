@@ -73,7 +73,7 @@ export const History = () => {
     <tr
       key={game.gameId}
       className={`${
-        index % 2 === 0 ? "bg-text/55" : "bg-bgdark/85"
+        index % 2 === 0 ? "bg-text/55" : "bg-text/85"
       } text-[10px] sm:text-sm hover:bg-text transition-all text-white font-bold`}
     >
       <td className="p-1 sm:p-3 text-center">{game.gameId}</td>

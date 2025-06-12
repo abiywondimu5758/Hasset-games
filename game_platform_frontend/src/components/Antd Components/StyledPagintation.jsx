@@ -23,7 +23,7 @@ export const StyledPagination = styled(Pagination).attrs(() => ({
      2) active page button
      ------------------------------------------------------------------------------------ */
   & .ant-pagination-item-active {
-    background: #20446f !important;
+    background: #E67300 !important;
     
     a {
       

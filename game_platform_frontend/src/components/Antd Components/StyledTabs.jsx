@@ -16,16 +16,16 @@ export const StyledTabs = styled(Tabs)`
   }
 
   & .ant-tabs-tab-active {
-    background-color: #20446f !important; /* Active tab background color */
+    background-color: #E67300 !important; /* Active tab background color */
     color: #ffffff !important; /* Active tab text color */
-    border: 2px solid #20446f !important; /* Change border color for active tab */
+    border: 2px solid #E67300 !important; /* Change border color for active tab */
     font-weight: bold; /* Optional: make the text bold */
   }
 
   & .ant-tabs-tab:hover {
     color: #ffffff !important; /* Text color on hover */
-    border: 2px solid #20446f !important;
-    background-color: #20446f !important;
+    border: 2px solid #E67300 !important;
+    background-color: #E67300 !important;
   }
 
 
