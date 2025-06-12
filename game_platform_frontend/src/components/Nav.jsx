@@ -160,7 +160,7 @@ const [infoMessage, setInfoMessage] = useState(null);
 
       {/* Top Navigation Bar */}
       <div className="flex justify-start items-center space-x-1 mb-6">
-      <img src={Logo} alt="Logo" className="h-20 w-auto" />
+      <img src={Logo} alt="Logo" className="h-20 w-auto cursor-pointer" onClick={() => handleTabChange("/dashboard")}/>
       <header className="bg-bg/75 py-1 px-2 ees:px-4 flex justify-between items-center shadow-md  h-12 w-full sm:w-full mx-auto rounded-md">
         
                 <div className="text-lg md:text-xl font-semibold flex justify-start md:space-x-0  items-center w-full">
@@ -170,7 +170,7 @@ const [infoMessage, setInfoMessage] = useState(null);
           >
             {isDrawerOpen ? <FaTimes /> : <FaBars />}
           </button>
-          <div className="flex space-x-0 text-text items-center" onClick={() => handleTabChange("/dashboard")}>
+          <div className="flex space-x-0 text-text items-center cursor-pointer" onClick={() => handleTabChange("/dashboard")}>
             <button
               className={`hidden sm:flex items-center ${isActive("/dashboard")}`}
             >
@@ -247,7 +247,7 @@ const [infoMessage, setInfoMessage] = useState(null);
             <span className="text-lg pt-4 font-semibold">
               Welcome,{" "}
               <span className="text-primary font-bold">
-                player!
+                {userStore?.userProfile?.username}!
               </span>
             </span>
 </div>

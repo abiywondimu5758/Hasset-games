@@ -20,6 +20,7 @@ import { FaHistory } from "react-icons/fa";
 import { FaWallet } from "react-icons/fa";
 import { MdAccountBalance } from "react-icons/md";
 import { message } from "antd";
+import { StyledTabs2 } from "./Antd Components/StyledTabs2";
 
 // Removed Tabs.TabPane as it is deprecated.
 
@@ -204,20 +205,20 @@ const Wallet = () => {
   };
 
   return (
-    <div className="bg-[#1c6758]/75  h-fit">
+    <div className="bg-text/75  h-fit">
       {contextHolder}
       <Nav />
-      <div className="flex justify-center items-start pt-10 p-6 w-full h-fit mb-20">
-        <div className="w-full max-w-sm mx-auto h-fit bg-white rounded-3xl shadow-lg">
-          <div className="px-6 pt-6">
+      <div className="flex justify-center items-start pt-10 p-6 w-full h-fit mb-20 ">
+        <div className="w-full max-w-sm mx-auto h-fit bg-bg rounded-3xl shadow-lg">
+          {/* <div className="px-6 pt-6">
             <img src="/assets/Asset1.svg" alt="Logo" />
-          </div>
-          <hr className="border-t-1 border-[#42855b] opacity-20 w-full mt-4 mb-2" />
-          <Tabs
+          </div> */}
+          {/* <hr className="border-t-1 border-[#42855b] opacity-20 w-full mt-4 mb-2" /> */}
+          <StyledTabs2
             defaultActiveKey="1"
             className="custom-tabs"
             tabBarStyle={{
-              borderColor: "#1c6758",
+              borderColor: "#20436F",
               boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
               padding: "12px", // Added padding of 2px
             }}
@@ -231,13 +232,13 @@ const Wallet = () => {
                     <FaWallet
                       className="text-lg"
                       style={{
-                        color: currentActiveTab === "1" ? "#1c6758" : "gray",
+                        color: currentActiveTab === "1" ? "#20436F" : "gray",
                       }}
                     /> 
                     <span
                       className={`text-base font-semibold ${
                         currentActiveTab === "1"
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-gray-500"
                       }`}
                     >
@@ -246,10 +247,10 @@ const Wallet = () => {
                   </span>
                 ),
                 children: (
-                  <div className="flex flex-col items-start justify-start space-y-3 w-full px-6 pt-2 pb-6">
+                  <div className="flex flex-col items-start justify-start space-y-1 w-full px-6 pt-2 pb-6">
                     <label
                       htmlFor="deposit"
-                      className="text-xs md:text-sm font-semibold text-[#1a1a1a]"
+                      className="text-sm md:text-base font-semibold text-text"
                     >
                       Amount
                     </label>
@@ -259,14 +260,14 @@ const Wallet = () => {
                         type="number"
                         value={depositAmount}
                         onChange={(e) => setDepositAmount(e.target.value)}
-                        className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a]"
+                        className="w-full mb-4 p-2 border border-text rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-text"
                         placeholder="Enter deposit amount"
                       />
                     </div>
                     <div className="flex flex-col items-start justify-start space-y-1 w-full">
                       <label
                         htmlFor="banks"
-                        className="text-xs md:text-sm font-semibold text-[#1a1a1a]"
+                        className="text-sm md:text-base font-semibold text-text"
                       >
                         Banks
                       </label>
@@ -275,10 +276,10 @@ const Wallet = () => {
                           Error fetching banks.
                         </p>
                       )}
-                      <div className="space-y-2 p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a]">
+                      <div className="space-y-2 p-2 border border-text rounded focus:outline-none focus:ring-1 focus:ring-[#20436F] text-xs font-semibold text-[#1a1a1a]">
                         {isLoadingBanks && (
                           <p className="text-xs">
-                            <Spinner color="#1c6758" size={3} />
+                            <Spinner color="#20436F" size={3} />
                           </p>
                         )}
                         {banks.map((bank, index) => (
@@ -292,15 +293,16 @@ const Wallet = () => {
                               value={bank.id}
                               checked={selectedDepositBank === bank.slug}
                               onChange={() => setSelectedDepositBank(bank.slug)}
+                              style={{ accentColor: '#20436F' }}
                             />
-                            <span>{bank.name}</span>
+                            <span className="text-text">{bank.name}</span>
                           </label>
                         ))}
                       </div>
                     </div>
                     <button
                       onClick={handleDeposit}
-                      className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-[#1c6758] hover:bg-opacity-75 transition duration-300 mt-2"
+                      className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-primary hover:bg-opacity-75 transition duration-300 mt-4"
                       disabled={depositMutation.isPending}
                       aria-busy={depositMutation.isPending}
                     >
@@ -325,13 +327,13 @@ const Wallet = () => {
                     <MdAccountBalance
                       className="text-lg"
                       style={{
-                        color: currentActiveTab === "2" ? "#1c6758" : "gray",
+                        color: currentActiveTab === "2" ? "#20436F" : "gray",
                       }}
                     /> 
                     <span
                       className={`text-base font-semibold ${
                         currentActiveTab === "2"
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-gray-500"
                       }`}
                     >
@@ -340,10 +342,10 @@ const Wallet = () => {
                   </span>
                 ),
                 children: (
-                  <div className="flex flex-col items-start justify-start space-y-3 w-full px-6 pt-2 pb-6">
+                  <div className="flex flex-col items-start justify-start space-y-1 w-full px-6 pt-2 pb-6">
                     <label
                       htmlFor="withdrawal"
-                      className="text-xs md:text-sm font-semibold text-[#1a1a1a]"
+                      className="text-sm md:text-base font-semibold text-text"
                     >
                       Amount
                     </label>
@@ -353,14 +355,14 @@ const Wallet = () => {
                         type="number"
                         value={withdrawalAmount}
                         onChange={(e) => setWithdrawalAmount(e.target.value)}
-                        className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a]"
+                        className="w-full mb-4 p-2 border border-text rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-[#1a1a1a]"
                         placeholder="Enter withdrawal amount"
                       />
                     </div>
                     <div className="flex flex-col items-start justify-start space-y-1 w-full">
                       <label
                         htmlFor="banks"
-                        className="text-xs md:text-sm font-semibold text-[#1a1a1a]"
+                        className="text-sm md:text-base font-semibold text-text"
                       >
                         Banks
                       </label>
@@ -369,10 +371,10 @@ const Wallet = () => {
                           Error fetching banks.
                         </p>
                       )}
-                      <div className="space-y-2 p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a]">
+                      <div className="space-y-2 p-2 border border-text rounded focus:outline-none focus:ring-1 focus:ring-[#20436F] text-xs font-semibold text-[#1a1a1a]">
                         {isLoadingBanks && (
                           <p className="text-xs">
-                            <Spinner color="#1c6758" size={3} />
+                            <Spinner color="#20436F" size={3} />
                           </p>
                         )}
                         {banks.map((bank, index) => (
@@ -386,8 +388,9 @@ const Wallet = () => {
                               value={bank.id}
                               checked={selectedBank === bank.id}
                               onChange={() => setSelectedBank(bank.id)}
+                              style={{ accentColor: '#20436F' }}
                             />
-                            <span>{bank.name}</span>
+                            <span className="text-text">{bank.name}</span>
                           </label>
                         ))}
                       </div>
@@ -399,7 +402,7 @@ const Wallet = () => {
                     )}
                     <button
                       onClick={handleWithdrawal}
-                      className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-[#1c6758] hover:bg-opacity-75 transition duration-300"
+                      className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-primary hover:bg-opacity-75 transition duration-300"
                       disabled={withdrawalMutation.isPending}
                       aria-busy={withdrawalMutation.isPending}
                     >
@@ -419,13 +422,13 @@ const Wallet = () => {
                     <FaHistory
                       className="text-lg"
                       style={{
-                        color: currentActiveTab === "3" ? "#1c6758" : "gray",
+                        color: currentActiveTab === "3" ? "#20436F" : "gray",
                       }}
                     /> 
                     <span
                       className={`text-base font-semibold ${
                         currentActiveTab === "3"
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-gray-500"
                       }`}
                     >
