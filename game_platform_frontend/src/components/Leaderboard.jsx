@@ -133,8 +133,8 @@ const Leaderboard = () => {
                           className={`${
                             activeTimeFrame === timeFrame
                               ? "bg-text text-white"
-                              : "bg-[#DFEAF8]/95 text-black"
-                          } px-2 py-2 sm:px-4 sm:py-2 rounded-lg cursor-pointer`}
+                              : "bg-bg text-text"
+                          } px-2 py-2 sm:px-4 sm:py-2 rounded-lg cursor-pointer font-semibold`}
                           onClick={() => fetchData(timeFrame)}
                         >
                           {timeFrame.charAt(0).toUpperCase() +

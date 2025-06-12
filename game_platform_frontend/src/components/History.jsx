@@ -58,7 +58,7 @@ export const History = () => {
             <div className="overflow-x-auto w-full rounded-md">
               <table className="min-w-full">
                 <thead>
-                  <tr className="text-[10px] sm:text-sm bg-bgdark mx-auto rounded-md">
+                  <tr className="text-[10px] sm:text-sm bg-text text-white mx-auto rounded-md">
                     <th className="p-1 sm:p-3 w-4 rounded-tl-md text-center">Game ID</th>
                     <th className="p-1 sm:p-3 text-center">Stake</th>
                     <th className="p-1 sm:p-3 text-center">Win</th>
@@ -73,8 +73,8 @@ export const History = () => {
     <tr
       key={game.gameId}
       className={`${
-        index % 2 === 0 ? "bg-text/75" : "bg-bgdark/75"
-      } text-[10px] sm:text-sm hover:bg-text transition-all text-white`}
+        index % 2 === 0 ? "bg-text/55" : "bg-bgdark/85"
+      } text-[10px] sm:text-sm hover:bg-text transition-all text-white font-bold`}
     >
       <td className="p-1 sm:p-3 text-center">{game.gameId}</td>
       <td className="p-1 sm:p-3 text-center">{game.stakeAmount} birr</td>

@@ -29,7 +29,7 @@ export const StyledTable = styled(Table)`
   }
 
   & tbody td {
-    color: #00b96b !important; /* Body text color */
+    color: #ffffff !important; /* Body text color */
     font-weight: bold !important; /* Default */
   }
 
