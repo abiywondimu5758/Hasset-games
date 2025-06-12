@@ -41,7 +41,7 @@ export const History = () => {
   return (
     <>
       {contextHolder}
-      <div className=" min-h-screen text-white px-2 sm:px-4 bg-text/75">
+      <div className=" min-h-screen text-text px-2 sm:px-4 bg-text/75">
         <Nav />
         <div className="px-1 sm:px-0 mb-20">
         {isPending && (
@@ -50,7 +50,7 @@ export const History = () => {
           
         )}
         {!isPending && data?.gameHistory?.length > 0 && (
-          <div className="p-4 sm:p-6 flex flex-col items-center text-[#f1f1f1]">
+          <div className="p-4 sm:p-6 flex flex-col items-center text-text">
            <div className="bg-bgdark/75 mx-auto rounded-md w-full flex flex-col items-center pt-2">
             <h2 className="text-lg sm:text-2xl font-bold mb-2 ">
               Game History
@@ -73,8 +73,8 @@ export const History = () => {
     <tr
       key={game.gameId}
       className={`${
-        index % 2 === 0 ? "bg-gray-600/75" : "bg-gray-700/75"
-      } text-[10px] sm:text-sm hover:bg-gray-500 transition-all`}
+        index % 2 === 0 ? "bg-text/75" : "bg-bgdark/75"
+      } text-[10px] sm:text-sm hover:bg-text transition-all text-white`}
     >
       <td className="p-1 sm:p-3 text-center">{game.gameId}</td>
       <td className="p-1 sm:p-3 text-center">{game.stakeAmount} birr</td>

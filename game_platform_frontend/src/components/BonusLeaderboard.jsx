@@ -52,7 +52,7 @@ const BonusLeaderboard = () => {
   if (isPending) return <Spinner />;
   if (error)
     return (
-      <p className="text-white font-semibold text-lg">
+      <p className="text-text font-semibold text-lg">
         There are currently no active Bonus Periods
       </p>
     );
@@ -79,7 +79,7 @@ const BonusLeaderboard = () => {
       children: period.leaderboard.length > 0 ? (
         <>
           <div className="flex flex-col space-y-2 mb-6 mt-4 w-full">
-            <span className="text-[#ffffff] text-base ">
+            <span className="text-text text-base ">
               <span className="font-semibold">Prize Distribution: </span>
               {period.period.prizeDistribution === 'PREDEFINED'
                 ? `For the top ${period.period.predefinedWinners === null ? 0 : period.period.predefinedWinners}`
@@ -87,14 +87,14 @@ const BonusLeaderboard = () => {
                   ? '3 winners will be randomly drawn from top 20'
                   : `For the top ${period.period.predefinedWinners === null ? 0 : period.period.predefinedWinners} and also 3 winners will be randomly drawn from top 20`}
             </span>
-            <span className="text-[#ffffff] font-semibold text-base mb-10">
+            <span className="text-text font-semibold text-base mb-10">
               {period.period.dateTimeInAMH}
             </span>
           </div>
           <div style={{ overflowX: "auto" }}>
             <table className="min-w-full">
               <thead>
-                <tr className="text-[10px] sm:text-sm text-white bg-[#20446f]/100 mx-auto rounded-md">
+                <tr className="text-[10px] sm:text-sm text-white bg-text/100 mx-auto rounded-md">
                   <th className="p-1 sm:p-3 w-4 rounded-tl-md text-center">Rank</th>
                   <th className="p-1 sm:p-3 text-center">Username</th>
                   <th className="p-1 sm:p-3 text-center">Total Points</th>
@@ -103,11 +103,11 @@ const BonusLeaderboard = () => {
                   <th className="p-1 sm:p-3 text-center rounded-tr-md">Min Game</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="rounded-md">
                 {visibleLeaderboard.map((item, idx) => (
                   <tr
                     key={item.username}
-                    className={`${idx % 2 === 0 ? "bg-gray-600/75" : "bg-gray-700/75"} text-[10px] text-white font-semibold sm:text-sm hover:bg-gray-500 transition-all`}
+                    className={`${idx % 2 === 0 ? "bg-text/55" : "bg-text/85"} text-[10px] text-white font-semibold sm:text-sm hover:bg-text transition-all `}
                   >
                     <td className="p-1 sm:p-3 text-center">{item.rank}</td>
                     <td className="p-1 sm:p-3 text-center">{item.username}</td>
@@ -142,12 +142,13 @@ const BonusLeaderboard = () => {
   });
 
   return (
+    <>
     <StyledTabs
       type="card"
       items={tabItems.map((tab) => ({
         ...tab,
         label: (
-          <span style={{ color: "white" }}>
+          <span className="tab-label-bonus">
             {tab.label}
           </span>
         ),
@@ -158,6 +159,19 @@ const BonusLeaderboard = () => {
         color: "white",
       }}
     />
+    <style>
+{`
+.tab-label-bonus {
+  color: #20436F;
+  transition: color 0.2s;
+}
+.tab-label-bonus:hover,
+.ant-tabs-tab-active .tab-label-bonus {
+  color: #ffffff;
+}
+`}
+</style>
+    </>
   );
 };
 

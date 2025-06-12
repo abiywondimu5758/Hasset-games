@@ -91,13 +91,14 @@ const Leaderboard = () => {
         <Nav />
         <div className="px-5 sm:px-0 mb-20">
         <div className="bg-bgdark/85  text-text p-6 rounded-xl max-w-lg mx-auto shadow-lg h-fit">
-          <div className="flex justify-between items-center mb-5">
-            <h2 className="sm:text-lg text-base font-semibold text-white">
+          <div className="flex justify-center items-center mb-5">
+            <h2 className="text-lg sm:text-2xl font-bold text-text">
               Leaderboard
             </h2>
           </div>
 
           <StyledTabs
+          
             activeKey={activeTab}
             onChange={setActiveTab}
             type="card"
@@ -106,7 +107,7 @@ const Leaderboard = () => {
                 key: "bonus",
                 label: (
                   <span
-                    style={{ color: "white" }} // Set text color to white
+                    className="tab-label-bonus"
                   >
                     Bonus
                   </span>
@@ -117,7 +118,7 @@ const Leaderboard = () => {
                 key: "players",
                 label: (
                   <span
-                    style={{ color: "white" }} // Set text color to white
+                    className="tab-label-bonus"
                   >
                     Players
                   </span>
@@ -206,6 +207,18 @@ const Leaderboard = () => {
         </div>
       </div>
       <Footerx />
+      <style>
+{`
+.tab-label-bonus {
+  color: #20436F;
+  transition: color 0.2s;
+}
+.tab-label-bonus:hover,
+.ant-tabs-tab-active .tab-label-bonus {
+  color: #ffffff;
+}
+`}
+</style>
     </>
   );
 };

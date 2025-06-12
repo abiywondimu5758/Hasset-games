@@ -110,7 +110,7 @@ const Profile = () => {
       <Nav />
 <div className="px-5 sm:px-0 mb-20">
       <div className="max-w-md mx-auto p-6 bg-bgdark/85 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4 text-text text-center">
+        <h2 className="text-lg sm:text-2xl font-bold mb-4 text-text text-center">
           Profile
         </h2>
         <form onSubmit={handleSubmit} className="space-y-2 mb-4">

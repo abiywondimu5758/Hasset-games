@@ -45,7 +45,7 @@ const Referrals = () => {
         {isPending && <Spinner className="p-4" />}
 
         {data && (
-          <div className="p-4 flex flex-col items-center text-[#E0E0E0]">
+          <div className="p-4 flex flex-col items-center text-text">
             <div className="bg-bgdark/85 mx-auto rounded-md w-full flex flex-col items-center pt-2">
             <h2 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-5">
               Referral History
@@ -81,8 +81,8 @@ const Referrals = () => {
                     <tr
                       key={referral.id}
                       className={`${
-                        index % 2 === 0 ? "bg-gray-600/75" : "bg-gray-700/75"
-                      } text-[10px] sm:text-sm hover:bg-gray-500 transition-all`}
+                        index % 2 === 0 ? "bg-text/75" : "bg-bgdark/75"
+                      } text-[10px] sm:text-sm hover:bg-text transition-all text-whitte`}
                     >
                       <td className="p-1 sm:p-3 text-center">{referral.referredUsername}</td>
                       <td className="p-1 sm:p-3 text-center">{referral.referredPhone}</td>
