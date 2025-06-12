@@ -79,12 +79,12 @@ const ChangePasswordForm = ({ set }) => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-[#849ec0]/65 rounded-lg shadow-md">
+    <div className="w-full max-w-md mx-auto p-6 bg-bg/65 rounded-lg shadow-md">
       {contextHolder}
-      <h2 className="text-xl font-bold mb-4 text-white text-center">Change Password</h2>
+      <h2 className="text-xl font-bold mb-4 text-text text-center">Change Password</h2>
       <form onSubmit={handleSubmit} className="space-y-2">
         <div className="flex flex-col items-start justify-start space-y-1 w-full">
-          <span className="text-xs md:text-sm font-semibold text-[#20446f]">Old Password</span>
+          <span className="text-xs md:text-sm font-semibold text-text">Old Password</span>
           <div className="relative w-full">
             <input
               type={showOldPassword ? "text" : "password"}
@@ -93,12 +93,12 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-[#20446f] bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-[#20446f] focus:outline-none text-xs font-semibold text-[#20446f]"
+              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"
               onClick={() => setShowOldPassword(!showOldPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#20446f]"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-text"
             >
               {showOldPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
@@ -106,7 +106,7 @@ const ChangePasswordForm = ({ set }) => {
         </div>
 
         <div className="flex flex-col items-start justify-start space-y-1 w-full">
-          <span className="text-xs md:text-sm font-semibold text-[#20446f]">New Password</span>
+          <span className="text-xs md:text-sm font-semibold text-text">New Password</span>
           <div className="relative w-full">
             <input
               type={showNewPassword ? "text" : "password"}
@@ -117,12 +117,12 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-[#20446f] bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-[#20446f] focus:outline-none text-xs font-semibold text-[#20446f]"
+              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"
               onClick={() => setShowNewPassword(!showNewPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#20446f]"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-text"
             >
               {showNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
@@ -136,7 +136,7 @@ const ChangePasswordForm = ({ set }) => {
         )}
 
         <div className="flex flex-col items-start justify-start space-y-1 w-full">
-          <span className="text-xs md:text-sm font-semibold text-[#20446f]">Confirm Password</span>
+          <span className="text-xs md:text-sm font-semibold text-text">Confirm Password</span>
           <div className="relative w-full">
             <input
               type={showConfirmPassword ? "text" : "password"}
@@ -147,12 +147,12 @@ const ChangePasswordForm = ({ set }) => {
               onChange={(e) => {
                 handleChange(e);
               }}
-              className="w-full p-2 border border-[#20446f] bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-[#20446f] focus:outline-none text-xs font-semibold text-[#20446f]"
+              className="w-full p-2 border border-text bg-[#849ec0] rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold text-text"
             />
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#20446f]"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-text"
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
@@ -182,7 +182,7 @@ const ChangePasswordForm = ({ set }) => {
             className={`w-full p-2 text-white rounded text-xs sm:text-sm ${
               !passwordsMatch || formData.oldPassword === "" || formData.newPassword === "" || formData.confirmPassword === ""
                 ? "bg-gray-500"
-                : "bg-[#20446f]"
+                : "bg-primary"
             }`}
             disabled={
               !passwordsMatch || formData.oldPassword === "" || formData.newPassword === "" || formData.confirmPassword === ""
@@ -192,7 +192,7 @@ const ChangePasswordForm = ({ set }) => {
           </button>
           <button
             onClick={() => set()}
-            className="w-full p-1 flex justify-center text-xs sm:text-sm items-center border-[#20446f] border-[1px] rounded-md hover:bg-gray-500 text-white"
+            className="w-full p-1 flex justify-center text-xs sm:text-sm items-center border-text border-[1px] rounded-md hover:bg-text hover:text-white text-text"
           >
             Cancel
           </button>

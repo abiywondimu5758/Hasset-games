@@ -105,17 +105,17 @@ const Profile = () => {
   if (profileLoading || userStore.loading) return <Spinner />;
 
   return (
-    <div className="min-h-screen bg-[#20446f]/75 ">
+    <div className="min-h-screen bg-text/75 ">
       {contextHolder}
       <Nav />
 <div className="px-5 sm:px-0 mb-20">
-      <div className="max-w-md mx-auto p-6 bg-[#849ec0]/85 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4 text-white text-center">
+      <div className="max-w-md mx-auto p-6 bg-bg/85 rounded-lg shadow-lg">
+        <h2 className="text-xl font-bold mb-4 text-text text-center">
           Profile
         </h2>
         <form onSubmit={handleSubmit} className="space-y-2 mb-4">
           <div className="flex flex-col items-start space-y-1 w-full">
-            <span className="text-xs md:text-sm font-semibold text-[#20446f]">
+            <span className="text-xs md:text-sm font-semibold text-text">
               Username (at least 4 characters)
             </span>
             <input
@@ -123,7 +123,7 @@ const Profile = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="w-full p-2 border border-[#20446f] rounded focus:border-none focus:ring-2 focus:ring-[#20446f] focus:outline-none text-xs font-semibold text-white bg-[#849ec0]"
+              className="w-full p-2  text-text border border-text rounded focus:border-none focus:ring-2 focus:ring-text focus:outline-none text-xs font-semibold bg-[#849ec0]"
             />
             {isChecking && (
               <div className="w-full flex justify-start mt-1">
@@ -145,7 +145,7 @@ const Profile = () => {
           </div>
 
           <div className="flex flex-col items-start space-y-1 w-full">
-            <span className="text-xs md:text-sm font-semibold text-[#20446f]">
+            <span className="text-xs md:text-sm font-semibold text-text">
               Phone Number
             </span>
             <input
@@ -153,7 +153,7 @@ const Profile = () => {
               name="phoneNumber"
               value={userStore.userProfile?.phoneNumber || ""}
               disabled={true}
-              className="w-full p-2 border border-[#20446f]/50 rounded focus:border-none focus:ring-2 focus:ring-[#66bb69] focus:outline-none text-xs font-semibold text-[#20446f]/70 bg-[#849ec0]"
+              className="w-full p-2 border border-text/50 rounded focus:border-none focus:ring-2 focus:ring-[#66bb69] focus:outline-none text-xs font-semibold text-text/70 bg-[#849ec0]"
             />
           </div>
 
@@ -161,7 +161,7 @@ const Profile = () => {
             type="submit"
             className={`w-full p-2 rounded text-xs md:text-sm  text-white ${
               usernameAvailable
-                ? "bg-[#20446f]"
+                ? "bg-primary"
                 : "bg-gray-500"
             }`}
             disabled={!usernameAvailable || usernameAvailable === null}
@@ -172,7 +172,7 @@ const Profile = () => {
 
         {!changePassword ? (
           <button
-            className="w-40 p-2 rounded text-xs md:text-sm bg-[#20446f] text-white"
+            className="w-40 p-2 rounded text-xs md:text-sm bg-primary text-white"
             onClick={() => setChangePassword(true)}
           >
             Change Password
