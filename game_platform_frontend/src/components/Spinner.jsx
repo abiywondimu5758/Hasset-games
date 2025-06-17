@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Spinner = ({ size = 6, color = "#ffffff" }) => (
+const Spinner = ({ size = 6, color = "#20436F" }) => (
   <div className="flex justify-center items-center">
     <div
       className={`w-${size} h-${size} border-4 border-t-transparent border-solid rounded-full animate-spin`}

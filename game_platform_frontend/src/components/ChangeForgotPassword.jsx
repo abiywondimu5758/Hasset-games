@@ -162,14 +162,14 @@ const ChangeForgotPassword = () => {
   return (
     <>
       {contextHolder}
-      <div className="flex justify-center items-start pt-20 p-6 bg-gradient-to-br bg-[#1c6758]/75 w-full h-screen">
+      <div className="flex justify-center items-start pt-20 p-6 bg-gradient-to-br bg-text/75 w-full h-screen">
         <div className="w-full max-w-sm mx-auto h-fit  bg-white rounded-3xl shadow-lg ">
           <div className="px-6 pt-6">
             <img src="/assets/Asset1.svg" alt="Logo" />
           </div>
           <hr className="border-t-1 border-[#42855b] opacity-20 w-full mt-4 mb-2" />
           <div className="px-6 pb-6">
-            <h2 className="text-xl md:text-2xl text-[#1c6758] font-semibold mb-4 text-center">
+            <h2 className="text-xl md:text-2xl text-text font-semibold mb-4 text-center">
               {"Change Password"}
             </h2>
 
@@ -235,7 +235,7 @@ const ChangeForgotPassword = () => {
                     Resend in {formatTime(timeLeft)}
                   </span>
                   <div
-                    className={`w-fit h-fit p-1 text-white rounded text-xs font-semibold bg-[#1c6758] cursor-pointer ${
+                    className={`w-fit h-fit p-1 text-white rounded text-xs font-semibold bg-text cursor-pointer ${
                       isResendDisabled ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                     onClick={isResendDisabled ? null : handleResendOTP}
@@ -257,13 +257,13 @@ const ChangeForgotPassword = () => {
                       onChange={(e) => {
                         handlePasswordChange(e.target.value);
                       }}
-                      className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a] bg-[#1c6758]/10"
+                      className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-[#1a1a1a] bg-text/10"
                       aria-required="true"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#1c6758]"
+                      className="absolute inset-y-0 right-0 flex items-center pr-3 text-text"
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }
@@ -278,7 +278,7 @@ const ChangeForgotPassword = () => {
                     <div
                       className={`flex space-x-1 items-center text-xs font-semibold ${
                         passwordCriteria.length
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-red-500"
                       }`}
                     >
@@ -292,7 +292,7 @@ const ChangeForgotPassword = () => {
                     <div
                       className={`flex space-x-1 items-center text-xs font-semibold ${
                         passwordCriteria.uppercase
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-red-500"
                       }`}
                     >
@@ -306,7 +306,7 @@ const ChangeForgotPassword = () => {
                     <div
                       className={`flex space-x-1 items-center text-xs font-semibold ${
                         passwordCriteria.lowercase
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-red-500"
                       }`}
                     >
@@ -320,7 +320,7 @@ const ChangeForgotPassword = () => {
                     <div
                       className={`flex space-x-1 items-center text-xs font-semibold ${
                         passwordCriteria.number
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-red-500"
                       }`}
                     >
@@ -334,7 +334,7 @@ const ChangeForgotPassword = () => {
                     <div
                       className={`flex space-x-1 items-center text-xs font-semibold ${
                         passwordCriteria.specialChar
-                          ? "text-[#1c6758]"
+                          ? "text-text"
                           : "text-red-500"
                       }`}
                     >
@@ -363,7 +363,7 @@ const ChangeForgotPassword = () => {
                       }
                       onFocus={() => setConfirmPasswordFocus(true)}
                       onBlur={() => setConfirmPasswordFocus(false)}
-                      className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a] bg-[#1c6758]/10"
+                      className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-[#1a1a1a] bg-text/10"
                       aria-required="true"
                     />
                     <button
@@ -371,7 +371,7 @@ const ChangeForgotPassword = () => {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#1c6758]"
+                      className="absolute inset-y-0 right-0 flex items-center pr-3 text-text"
                       aria-label={
                         showConfirmPassword
                           ? "Hide confirm password"
@@ -383,7 +383,7 @@ const ChangeForgotPassword = () => {
                     {confirmPasswordFocus && (
                       <div className="flex space-x-1 items-center text-xs font-semibold">
                         {passwordsMatch ? (
-                          <div className="flex space-x-1 text-[#1c6758] items-center ">
+                          <div className="flex space-x-1 text-text items-center ">
                             <BsCheckCircleFill />
                             <p>{"Passwords match"}</p>
                           </div>
@@ -399,7 +399,7 @@ const ChangeForgotPassword = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-[#1c6758] hover:bg-opacity-75 transition duration-300"
+                  className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-text hover:bg-opacity-75 transition duration-300"
                   disabled={changeForgottenPasswordMutation.isPending}
                   aria-busy={changeForgottenPasswordMutation.isPending}
                 >
@@ -421,9 +421,9 @@ function Slot(props) {
   return (
     <div
       className={cn(
-        " relative sm:w-10 sm:h-10 w-[36px] h-[36px] sm:text-xl text-[#1c6758] text-lg font-semibold flex items-center justify-center", // Base size and positioning
+        " relative sm:w-10 sm:h-10 w-[36px] h-[36px] sm:text-xl text-text text-lg font-semibold flex items-center justify-center", // Base size and positioning
         "transition-all duration-300", // Smooth transitions
-        "border border-[#1c6758]  first:border-l first:rounded-l-md last:rounded-r-md", // Border and rounded corners
+        "border border-text  first:border-l first:rounded-l-md last:rounded-r-md", // Border and rounded corners
         "group-hover:border-accent-foreground/20 group-focus-within:border-accent-foreground/20", // Hover and focus styles
         "outline-0 outline-accent-foreground/20", // Outline styling
         props.isActive && "outline-4 outline-accent-foreground" // Conditional active state
@@ -445,7 +445,7 @@ Slot.propTypes = {
 function FakeCaret() {
   return (
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center animate-caret-blink">
-      <div className="w-px h-5 sm:6 bg-[#1c6758]" />
+      <div className="w-px h-5 sm:6 bg-text" />
     </div>
   );
 }
@@ -454,7 +454,7 @@ function FakeCaret() {
 function FakeDash() {
   return (
     <div className="flex sm:w-4 w-3  justify-center items-center">
-      <div className="sm:w-2 w-2 h-[2px] rounded-full bg-[#1c6758] bg-border" />
+      <div className="sm:w-2 w-2 h-[2px] rounded-full bg-text bg-border" />
     </div>
   );
 }

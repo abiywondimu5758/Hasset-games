@@ -50,8 +50,8 @@ const ForgotPassword = () => {
   return (
     <>
       {contextHolder}
-      <div className="flex justify-center items-start pt-20 p-6 bg-gradient-to-br bg-[#1c6758]/75 w-full h-screen">
-        <div className="w-full max-w-sm mx-auto h-fit  bg-white rounded-3xl shadow-lg ">
+      <div className="flex justify-center items-start pt-20 p-6 bg-gradient-to-br bg-bg/75 w-full h-screen">
+        <div className="w-full max-w-sm mx-auto h-fit  bg-bg rounded-3xl shadow-lg ">
           <div className="px-6 pt-6">
             <img src="/assets/Asset1.svg" alt="Logo" />
           </div>
@@ -60,23 +60,23 @@ const ForgotPassword = () => {
           <div className="flex justify-start items-center space-x-16 mb-4">
             <div className="flex justify-start mb-4">
               <button
-                className="flex items-center text-[#1c6758] hover:text-[#42855b] transition duration-300"
+                className="flex items-center text-text hover:text-[#42855b] transition duration-300"
                 onClick={() => navigate("/login")}
               >
                 <ArrowLeftOutlined className="mr-2 font-extraBold" />
                 
               </button>
             </div>
-            <h2 className="text-xl md:text-2xl text-[#1c6758] font-semibold mb-4 text-center">
+            <h2 className="text-xl md:text-2xl text-text font-semibold mb-4 text-center">
               {"Forgot Password"}
             </h2>
 </div>
             <>
-              <div className="w-full flex flex-col items-center space-y-6 text-[#263238] pt-2">
+              <div className="w-full flex flex-col items-center space-y-6 text-text pt-2">
                 <div className="flex flex-col items-start justify-start space-y-1 w-full">
                   <label
                     htmlFor="Phone Number"
-                    className="text-xs md:text-sm font-semibold text-[#1a1a1a]"
+                    className="text-xs md:text-sm font-semibold text-text"
                   >
                     Phone Number
                   </label>
@@ -85,7 +85,7 @@ const ForgotPassword = () => {
                     open={showPhoneNumberToolTip}
                     placement="top"
                     overlayInnerStyle={{
-                      backgroundColor: "#1c6758",
+                      backgroundColor: "text",
                       color: "#fff",
                     }}
                   >
@@ -100,7 +100,7 @@ const ForgotPassword = () => {
                             setFormData({ ...formData, phoneNumber: value });
                           }
                         }}
-                        className="w-full p-2 border border-[#42855b] rounded focus:outline-none focus:ring-1 focus:ring-[#1c6758] text-xs font-semibold text-[#1a1a1a] bg-[#1c6758]/10"
+                        className="w-full p-2 border border-text rounded focus:outline-none focus:ring-1 focus:ring-text text-xs font-semibold text-text bg-text/10"
                         aria-required="true"
                       />
                     </div>
@@ -109,7 +109,7 @@ const ForgotPassword = () => {
 
                 <div className="flex justify-center pt-2 w-full">
                   <button
-                    className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-[#1c6758] hover:bg-opacity-75 transition duration-300"
+                    className="w-full px-2 py-1 text-white rounded text-base font-semibold bg-text hover:bg-opacity-75 transition duration-300"
                     disabled={forgotPasswordMutation.isPending}
                     aria-busy={forgotPasswordMutation.isPending}
                     onClick={(e) => handleForgotPassword(e)}
