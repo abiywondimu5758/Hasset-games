@@ -85,7 +85,7 @@ services:
     restart: always  # Ensure backup container restarts if it fails
 
 volumes:
-  pgdata:
+  pgdata1:
 
 networks:
   backend-network:
