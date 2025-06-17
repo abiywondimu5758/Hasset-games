@@ -8,50 +8,59 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: SSH to VPS and Deploy
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.VPS_IP }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22
-        source: "game_platform_backend/docker-compose.yml"
-        target: "/home/root/projects/hasset_games/game_platform_backend"
-    - name: SSH Commands
+    - name: Setup SSH on runner
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
+    - name: Clone or update repository on VPS
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.VPS_IP }}
+        host:     ${{ secrets.VPS_IP }}
         username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22
+        key:      ${{ secrets.SSH_PRIVATE_KEY }}
+        port:     22
         script: |
-          # Navigate to the projects directory
+          mkdir -p /root/projects
           cd /root/projects
-          
-          # Clone the repo if not present, or pull latest changes
-          if [ ! -d "hasset_games" ]; then
-            git clone --branch main git@github.com:abiywondimu5758/Hasset-games.git
+
+          # Clone fresh if .git not present
+          if [ ! -d "hasset_games/.git" ]; then
+            rm -rf hasset_games
+            git clone --branch main https://github.com/abiywondimu5758/Hasset-games.git hasset_games
           else
             cd hasset_games
             git pull origin main
           fi
-          
-          # Navigate to game_platform_backend
-          cd game_platform_backend
-          
-          # Check if package.json exists
-          if [ ! -f "package.json" ]; then
-            echo "Error: package.json not found!"
+
+    - name: Copy docker-compose to VPS
+      uses: appleboy/scp-action@master
+      with:
+        host:     ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USER }}
+        key:      ${{ secrets.SSH_PRIVATE_KEY }}
+        port:     22
+        source:   "game_platform_backend/docker-compose.yml"
+        target:   "/root/projects/hasset_games/game_platform_backend"
+
+    - name: Install and deploy on VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host:     ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USER }}
+        key:      ${{ secrets.SSH_PRIVATE_KEY }}
+        port:     22
+        script: |
+          cd /root/projects/hasset_games/game_platform_backend
+          if [ ! -f package.json ]; then
+            echo "Error: package.json not found!" >&2
             exit 1
           fi
-          
-          # Install Node.js dependencies
           npm install
-          
-          # Run Docker Compose to build and deploy the game_platform_backend
           sudo docker-compose up -d --build
