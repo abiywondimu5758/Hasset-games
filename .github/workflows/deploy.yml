@@ -58,9 +58,22 @@ jobs:
         port:     22
         script: |
           cd /root/projects/hasset_games/game_platform_backend
-          if [ ! -f package.json ]; then
-            echo "Error: package.json not found!" >&2
-            exit 1
+
+          # Ensure Node.js >=16 is installed
+          if ! command -v node >/dev/null || [[ "$(node -v)" < "v16.13.0" ]]; then
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
           fi
+
+          # Create .env from secret
+          if [ -n "${{ secrets.APP_ENV_CONTENT }}" ]; then
+            echo "${{ secrets.APP_ENV_CONTENT }}" > .env
+          else
+            echo "Warning: no APP_ENV_CONTENT secret found, .env missing" >&2
+          fi
+
+          # Install Node.js dependencies
           npm install
+
+          # Deploy with Docker Compose
           sudo docker-compose up -d --build
