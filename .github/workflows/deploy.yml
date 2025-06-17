@@ -76,4 +76,4 @@ jobs:
           npm install
 
           # Deploy with Docker Compose
-          sudo docker-compose up -d --build
+          sudo docker-compose -p hasset up -d --build
