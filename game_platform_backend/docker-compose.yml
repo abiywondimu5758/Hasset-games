@@ -77,13 +77,13 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backups:/backups  # Mount local backups directory to container
-      - ./backup.sh:/usr/local/bin/backup.sh  # Mount the backup script
+      - ./backups:/backups
+      - ./backup.sh:/usr/local/bin/backup.sh
     networks:
       - backend-network
-    entrypoint: ["/bin/sh", "-c", "/usr/local/bin/backup.sh"]  # Run the backup script
-    restart: always  # Ensure backup container restarts if it fails
-
+    entrypoint: ["/bin/sh", "-c", "chmod +x /usr/local/bin/backup.sh && /usr/local/bin/backup.sh"]
+    restart: always
+    
 volumes:
   pgdata:
 
