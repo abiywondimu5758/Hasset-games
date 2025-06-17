@@ -85,7 +85,7 @@ const ForgotPassword = () => {
                     open={showPhoneNumberToolTip}
                     placement="top"
                     overlayInnerStyle={{
-                      backgroundColor: "text",
+                      backgroundColor: "#20436F",
                       color: "#fff",
                     }}
                   >
