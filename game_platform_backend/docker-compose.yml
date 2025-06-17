@@ -45,7 +45,7 @@ services:
     image: edoburu/pgbouncer
     environment:
       DB_HOST: db
-      DB_PORT: 5442
+      DB_PORT: 5432
       DB_USER: postgres
       DB_PASSWORD: root
       POOL_MODE: transaction  # Adjust pool mode as needed (session/transaction)
@@ -54,7 +54,7 @@ services:
       LISTEN_ADDR: 0.0.0.0
       LISTEN_PORT: 6442
     ports:
-      - "6442:6432"  # Expose PgBouncer on port 6433
+      - "6442:6432"  # Expose PgBouncer on port 6442
     volumes:
       - ./pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini  # Optional: Custom PgBouncer config
     depends_on:
@@ -83,7 +83,7 @@ services:
       - backend-network
     entrypoint: ["/bin/sh", "-c", "chmod +x /usr/local/bin/backup.sh && /usr/local/bin/backup.sh"]
     restart: always
-    
+
 volumes:
   pgdata:
 
