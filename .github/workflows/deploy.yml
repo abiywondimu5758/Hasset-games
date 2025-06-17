@@ -27,7 +27,7 @@ jobs:
         key:      ${{ secrets.SSH_PRIVATE_KEY }}
         port:     22
         source:   "game_platform_backend/docker-compose.yml"
-        target:   "/home/root/projects/hasset_games/game_platform_backend"
+        target:   "/root/projects/hasset_games/game_platform_backend"
 
     - name: SSH Commands
       uses: appleboy/ssh-action@master
@@ -37,19 +37,27 @@ jobs:
         key:      ${{ secrets.SSH_PRIVATE_KEY }}
         port:     22
         script: |
-          # Trust GitHub for remote cloning
-          mkdir -p ~/.ssh
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          # Trust GitHub for HTTPS cloning (optional for SSH clone)
+          # mkdir -p ~/.ssh
+          # ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
+          # Ensure project directory exists
+          mkdir -p /root/projects
           cd /root/projects
+
+          # Clone into hasset_games or pull latest
           if [ ! -d "hasset_games" ]; then
-            git clone --branch main git@github.com:abiywondimu5758/Hasset-games.git
+            git clone --branch main https://github.com/abiywondimu5758/Hasset-games.git hasset_games
           else
             cd hasset_games
             git pull origin main
           fi
 
-          cd game_platform_backend
-          [ -f package.json ] || (echo "Error: package.json not found!" && exit 1)
+          # Deploy backend
+          cd hasset_games/game_platform_backend
+          if [ ! -f package.json ]; then
+            echo "Error: package.json not found!" >&2
+            exit 1
+          fi
           npm install
           sudo docker-compose up -d --build
