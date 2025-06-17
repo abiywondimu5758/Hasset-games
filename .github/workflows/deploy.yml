@@ -21,7 +21,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         source: "game_platform_backend/docker-compose.yml"
-        target: "/home/root/projects/arcade_games/game_platform_backend"
+        target: "/home/root/projects/hasset_games/game_platform_backend"
     - name: SSH Commands
       uses: appleboy/ssh-action@master
       with:
@@ -34,10 +34,10 @@ jobs:
           cd /root/projects
           
           # Clone the repo if not present, or pull latest changes
-          if [ ! -d "arcade_games" ]; then
-            git clone --branch main git@github.com:abiywondimu5758/arcade_games.git
+          if [ ! -d "hasset_games" ]; then
+            git clone --branch main git@github.com:abiywondimu5758/Hasset-games.git
           else
-            cd arcade_games
+            cd hasset_games
             git pull origin main
           fi
           
