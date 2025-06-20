@@ -1,4 +1,6 @@
 import io from "socket.io-client";
+
+// Haset Games API URL
 const BASE_URL = "https://api.hasetgames.com";
 export const socket = io("https://api.hasetgames.com");
 
