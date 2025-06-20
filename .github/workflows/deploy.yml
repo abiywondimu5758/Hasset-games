@@ -49,7 +49,7 @@ jobs:
         source:   "game_platform_backend/docker-compose.yml"
         target:   "/root/projects/hasset_games/game_platform_backend"
 
-    - name: Install and deploy on VPS
+    - name: Install Node.js, dependencies & deploy
       uses: appleboy/ssh-action@master
       with:
         host:     ${{ secrets.VPS_IP }}
@@ -58,6 +58,9 @@ jobs:
         port:     22
         script: |
           cd /root/projects/hasset_games/game_platform_backend
+
+          # Remove old Node dev headers that conflict
+          sudo apt-get remove -y libnode-dev
 
           # Ensure Node.js >=16 is installed
           if ! command -v node >/dev/null || [[ "$(node -v)" < "v16.13.0" ]]; then
