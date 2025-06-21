@@ -29,7 +29,7 @@ try:
     @dp.message(CommandStart())  
     async def start(message: types.Message):
         keyboard = ReplyKeyboardMarkup(
-            keyboard=[[KeyboardButton(text="Play", web_app=WebAppInfo(url="https://bingo.fortunebets.net"))]],
+            keyboard=[[KeyboardButton(text="Play", web_app=WebAppInfo(url="https://hasetgames.com"))]],
             resize_keyboard=True
         )
         
